@@ -1,0 +1,6 @@
+C:\Users\joshn\Desktop\Programmin\C# Projects\MastermindCodeChallenge\MastermindCodeChallenge\bin\Debug\MastermindCodeChallenge.exe.config
+C:\Users\joshn\Desktop\Programmin\C# Projects\MastermindCodeChallenge\MastermindCodeChallenge\bin\Debug\MastermindCodeChallenge.exe
+C:\Users\joshn\Desktop\Programmin\C# Projects\MastermindCodeChallenge\MastermindCodeChallenge\bin\Debug\MastermindCodeChallenge.pdb
+C:\Users\joshn\Desktop\Programmin\C# Projects\MastermindCodeChallenge\MastermindCodeChallenge\obj\Debug\MastermindCodeChallenge.csprojResolveAssemblyReference.cache
+C:\Users\joshn\Desktop\Programmin\C# Projects\MastermindCodeChallenge\MastermindCodeChallenge\obj\Debug\MastermindCodeChallenge.exe
+C:\Users\joshn\Desktop\Programmin\C# Projects\MastermindCodeChallenge\MastermindCodeChallenge\obj\Debug\MastermindCodeChallenge.pdb
