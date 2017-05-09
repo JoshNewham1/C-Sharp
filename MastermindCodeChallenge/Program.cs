@@ -15,9 +15,21 @@ namespace MastermindCodeChallenge
             Random rnd = new Random();
             bool win = false;
             string randomnum = Convert.ToString(rnd.Next(1000, 9999));
+            int numberofcorrectdigits = 0;
+            int randomnumlength = randomnum.Length;
+            string[] digitsguessed; // Creates an array for the digits guessed correctly
+            digitsguessed = new string[randomnumlength]; // Restricts the array to 4 numbers
+
+
+            
             while (true)
             {
-                
+                numberofcorrectdigits = 0;
+                string outputEasyMatched = "";
+                for (int n = 0; n < randomnumlength; n++)
+                {
+                    digitsguessed[n] = "*";
+                }
                 if (win == true) // Creates a new number if the previous one was guessed
                 {
                     Console.WriteLine("-=-=-=NEW GAME-=-=-=");
@@ -43,33 +55,31 @@ namespace MastermindCodeChallenge
                 }
                 if (win != true)
                 {
-
-                    int numberofcorrectdigits = 0;
-                    int randomnumlength = randomnum.Length;
-                    Console.WriteLine(randomnumlength);
                     for (int i = 0; i < randomnumlength; i++)
                     {
-                        Console.WriteLine("The loop has incremented " + i + "times");
-
-
-
                         if (inpArray[i] == randomArray[i])
                         {
                             if (mode == "E")
                             {
                                 // Easy Mode
-                                Console.WriteLine("You have guessed digit number " + (i) + " in the random number. Try again!");
-                                //i++;
+                                digitsguessed[i] = randomArray[i].ToString(); // Add the number guessed right to its corresponding position in the array (array starts at 0)
+                                if (i == (randomnumlength - 1))
+                                {
+                                    for (int concatenation = 0; concatenation < randomnumlength; concatenation++)
+                                    {
+                                        outputEasyMatched = outputEasyMatched + digitsguessed[concatenation];
+                                    }
+                                    Console.WriteLine("You guessed these digits correctly "+outputEasyMatched);
+                                }
                             }
 
                             if (mode == "H")
                             {
                                 // Hard Mode
                                 numberofcorrectdigits++;
-                                if (i == randomnumlength - 1)
+                                if (i == (randomnumlength - 1))
                                 {
                                     Console.WriteLine("You have got " + numberofcorrectdigits + " digits correct.");
-                                    //i++;
                                 }
 
                             }
