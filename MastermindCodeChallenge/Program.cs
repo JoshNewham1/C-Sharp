@@ -12,16 +12,28 @@ namespace MastermindCodeChallenge
         {
             Console.WriteLine("Which mode would you like to pick (E)asy mode or (H)ard mode? ");
             string mode = Console.ReadLine();
+            Console.WriteLine("(4) or (5) digits?");
+            string amountofdigits = Console.ReadLine();
             Random rnd = new Random();
             bool win = false;
-            string randomnum = Convert.ToString(rnd.Next(1000, 9999));
+            int minRndValue = 1000;
+            int maxRndValue = 9999;
+            if (amountofdigits == "4") {
+                minRndValue = 1000;
+                maxRndValue = 9999;
+            }
+            if (amountofdigits == "5") {
+                minRndValue = 10000;
+                maxRndValue = 99999;
+            }
+            string randomnum = Convert.ToString(rnd.Next(minRndValue, maxRndValue));
             int numberofcorrectdigits = 0;
             int randomnumlength = randomnum.Length;
             string[] digitsguessed; // Creates an array for the digits guessed correctly
             digitsguessed = new string[randomnumlength]; // Restricts the array to 4 numbers
 
 
-            
+
             while (true)
             {
                 numberofcorrectdigits = 0;
@@ -33,16 +45,20 @@ namespace MastermindCodeChallenge
                 if (win == true) // Creates a new number if the previous one was guessed
                 {
                     Console.WriteLine("-=-=-=NEW GAME-=-=-=");
-                    randomnum = Convert.ToString(rnd.Next(1000, 9999));
+                    randomnum = Convert.ToString(rnd.Next(minRndValue, maxRndValue));
                     win = false;
                 }
                 var randomArray = randomnum.ToCharArray();
                 int randomnumconverted = Int32.Parse(randomnum);
                 Console.WriteLine(randomnum);
                 var playerinp = Console.ReadLine();
-                if (playerinp.Length > 4)
+                if (playerinp.Length != randomnumlength)
                 {
-                    Console.WriteLine("Incorrect input. You might have typed too many number. Try again.");
+                    Console.WriteLine("Incorrect input. You might have typed the incorrect amount of numbers. Try again.");
+                    playerinp = Console.ReadLine();
+                }
+                while (playerinp == "") {
+                    Console.WriteLine("Please input a number.");
                     playerinp = Console.ReadLine();
                 }
                 var inpArray = playerinp.ToCharArray();
@@ -57,39 +73,40 @@ namespace MastermindCodeChallenge
                 {
                     for (int i = 0; i < randomnumlength; i++)
                     {
-                        if (inpArray[i] == randomArray[i])
-                        {
-                            if (mode == "E")
-                            {
-                                // Easy Mode
-                                digitsguessed[i] = randomArray[i].ToString(); // Add the number guessed right to its corresponding position in the array (array starts at 0)
-                                if (i == (randomnumlength - 1))
+                        if (i == (randomnumlength - 1) && mode == "E" ) // If it is at the end of the checking and it is Easy Mode
                                 {
                                     for (int concatenation = 0; concatenation < randomnumlength; concatenation++)
                                     {
                                         outputEasyMatched = outputEasyMatched + digitsguessed[concatenation];
                                     }
-                                    Console.WriteLine("You guessed these digits correctly "+outputEasyMatched);
+                                    Console.WriteLine("You guessed these digits correctly " + outputEasyMatched);
                                 }
+                        if (i == (randomnumlength - 1) && mode == "H" ) // If it is at the end of the checking and it is Hard Mode
+                                {
+                                    Console.WriteLine("You have got " + numberofcorrectdigits + " digits correct.");
+                                }
+                        if (inpArray[i] == randomArray[i]) // If there is a match
+                        {
+                            if (mode == "E")
+                            {
+                                // Easy Mode
+                                digitsguessed[i] = randomArray[i].ToString(); // Add the number guessed right to its corresponding position in the array (array starts at 0)
+                                
                             }
 
                             if (mode == "H")
                             {
                                 // Hard Mode
                                 numberofcorrectdigits++;
-                                if (i == (randomnumlength - 1))
-                                {
-                                    Console.WriteLine("You have got " + numberofcorrectdigits + " digits correct.");
-                                }
 
                             }
+
                         }
 
 
 
 
                     }
-
                     System.Threading.Thread.Sleep(1000);
                 }
             }
