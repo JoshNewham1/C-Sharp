@@ -12,8 +12,15 @@ namespace MastermindCodeChallenge
         {
             Console.WriteLine("Which mode would you like to pick (E)asy mode or (H)ard mode? ");
             string mode = Console.ReadLine();
+            if (mode == "e" || mode == "easy" || mode == "Easy") { // Just in case the user decides to type a different character instead of E which means the same thing
+                mode = "E";
+            }
+            if (mode == "h" || mode == "hard" || mode == "Hard") { // Just in case the user decides to type a different character instead of H which means the same thing
+                mode = "H";
+            }
             Console.WriteLine("(4) or (5) digits?");
             string amountofdigits = Console.ReadLine();
+            
             Random rnd = new Random();
             bool win = false;
             int minRndValue = 1000;
