@@ -15,6 +15,10 @@ namespace MastermindCodeChallenge
         }
         static void Main(string[] args)
         {
+            Console.WriteLine("-=-=-=-=-=-=-=-=-=-=-");
+            Console.WriteLine("Welcome to Mastermind");
+            Console.WriteLine("By Josh Newham");
+            Console.WriteLine("-=-=-=-=-=-=-=-=-=-=-");
             Console.WriteLine("Which mode would you like to pick (E)asy mode or (H)ard mode? ");
             string mode = Console.ReadLine();
             if (mode == "e" || mode == "easy" || mode == "Easy") { // Just in case the user decides to type a different character instead of E which means the same thing
@@ -76,7 +80,8 @@ namespace MastermindCodeChallenge
                 }
                 var randomArray = randomnum.ToCharArray();
                 int randomnumconverted = Int32.Parse(randomnum);
-                Console.WriteLine(randomnum);
+                // Console.WriteLine(randomnum);
+                // Uncomment this to see the random number generated for easier debugging
                 var playerinp = Console.ReadLine();
                 while ((playerinp.Length != randomnumlength) || (playerinp == ""))
                 {
@@ -156,7 +161,6 @@ namespace MastermindCodeChallenge
 
 
                     }
-                    System.Threading.Thread.Sleep(1000);
                 }
             }
         }
