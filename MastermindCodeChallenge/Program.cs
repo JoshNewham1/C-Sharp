@@ -78,15 +78,12 @@ namespace MastermindCodeChallenge
                 int randomnumconverted = Int32.Parse(randomnum);
                 Console.WriteLine(randomnum);
                 var playerinp = Console.ReadLine();
-                if (playerinp.Length != randomnumlength)
+                while ((playerinp.Length != randomnumlength) || (playerinp == ""))
                 {
                     Console.WriteLine("Incorrect input. You might have typed the incorrect amount of numbers. Try again.");
                     playerinp = Console.ReadLine();
                 }
-                while (playerinp == "") {
-                    Console.WriteLine("Please input a number.");
-                    playerinp = Console.ReadLine();
-                }
+                numberofattempts++;
                 var inpArray = playerinp.ToCharArray();
                 int playerinpconverted = Int32.Parse(playerinp);
                 if (playerinpconverted == randomnumconverted)
@@ -108,17 +105,14 @@ namespace MastermindCodeChallenge
                         if (showList == "Y" || showList == "y") {
                             Console.Clear();
                             Console.WriteLine(defaultHighScoresText);
-                            Console.WriteLine("       Name       Number of Attempts");
+                            Console.WriteLine("           Name           Number of Attempts");
                             foreach(var curscores in highscoreList) { // curscore is an alias for the current record and highscorelist is the entire list
-                                Console.WriteLine("{1}{0}", curscores.attempts, curscores.username.PadRight(18));
+                                Console.WriteLine("{1}{0}", curscores.attempts, curscores.username.PadRight(26));
                             }
                             Console.ReadLine();
                             Console.Clear();
                         }
                         
-                    }
-                    if (highScoresAnswer == "N" || highScoresAnswer == "n") {
-                        Console.WriteLine("No");
                     }
                     win = true;
                     numberofattempts = 0;
@@ -134,7 +128,7 @@ namespace MastermindCodeChallenge
                                         outputEasyMatched = outputEasyMatched + digitsguessed[concatenation];
                                     }
                                     Console.WriteLine("You guessed these digits correctly " + outputEasyMatched);
-                                    numberofattempts++;
+                                    
                                 }
                         if (i == (randomnumlength - 1) && mode == "H" ) // If it is at the end of the checking and it is Hard Mode
                                 {
