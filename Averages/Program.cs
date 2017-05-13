@@ -12,8 +12,9 @@ namespace ConsoleApplication1
             string typeofaverage;
             string numberlist;
             string endofprogram;
-            int tempMean = 0;
+            double tempMean = 0;
             int middlenumber;
+            double median;
             while (true) {
                 Console.Clear();
                 Console.WriteLine("-=-=-=-=-=-=-=-=-=-=-=");
@@ -28,12 +29,26 @@ namespace ConsoleApplication1
                     foreach (string item in split) {
                         tempMean = tempMean + Int32.Parse(item);
                     }
-                    double totalMean = tempMean / split.Length + 1;
+                    double totalMean = tempMean / split.Length;
                     Console.WriteLine("The mean of these numbers is " + totalMean);
                 }
                 if (typeofaverage == "median" || typeofaverage == "Median") {
-                    middlenumber = (split.Length / 2);
-                    Console.WriteLine("The median of the list is " + split[middlenumber]);
+                    if (split.Length % 2 == 0) { // Checks if length is even
+                        Array.Sort(split);
+                        int[] intsplit = split.Select(int.Parse).ToArray();
+                        int middle = intsplit.Length / 2;
+                        double first = intsplit[middle];
+                        double second = intsplit[middle - 1];
+                        median = (first + second) / 2;
+                        Console.WriteLine("The median of the list is " + median);
+
+                    }
+                    if (split.Length % 2 != 0) {
+                        Array.Sort(split);
+                        middlenumber = (split.Length / 2);
+                        Console.WriteLine("The median of the list is " + split[middlenumber]);
+                    }
+                    
                 }
                 Console.WriteLine("Type 'Q' to quit or press enter to calculate another average. ");
                 endofprogram = Console.ReadLine();
