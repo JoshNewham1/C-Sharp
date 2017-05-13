@@ -25,6 +25,7 @@ namespace ConsoleApplication1
                 Console.WriteLine("Please specify which numbers you would like to find the average of seperated by commas. ");
                 numberlist = Console.ReadLine();
                 string[] split = numberlist.Split(',');
+                int[] intsplit = split.Select(int.Parse).ToArray();
                 if (typeofaverage == "mean" || typeofaverage == "Mean") {
                     foreach (string item in split) {
                         tempMean = tempMean + Int32.Parse(item);
@@ -35,7 +36,6 @@ namespace ConsoleApplication1
                 if (typeofaverage == "median" || typeofaverage == "Median") {
                     if (split.Length % 2 == 0) { // Checks if length is even
                         Array.Sort(split);
-                        int[] intsplit = split.Select(int.Parse).ToArray();
                         int middle = intsplit.Length / 2;
                         double first = intsplit[middle];
                         double second = intsplit[middle - 1];
@@ -49,6 +49,13 @@ namespace ConsoleApplication1
                         Console.WriteLine("The median of the list is " + split[middlenumber]);
                     }
                     
+                }
+                if (typeofaverage == "mode" || typeofaverage == "Mode") {
+                    int mode = intsplit.GroupBy(i => i) // Groups the same items together
+                                       .OrderByDescending(g => g.Count()) // Getting frequency of group
+                                       .Select(g => g.Key) // Selecting the key of the group
+                                       .First(); // Taking the most frequent value
+                    Console.WriteLine("The mode of the list is " + mode);
                 }
                 Console.WriteLine("Type 'Q' to quit or press enter to calculate another average. ");
                 endofprogram = Console.ReadLine();
