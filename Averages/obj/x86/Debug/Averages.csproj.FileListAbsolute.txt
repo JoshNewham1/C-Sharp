@@ -8,3 +8,8 @@ D:\Git Code\Averages\Averages\obj\x86\Debug\Averages.exe
 D:\Git Code\Averages\Averages\obj\x86\Debug\Averages.pdb
 D:\Git Code\Averages\Averages\bin\Debug\Averages.exe
 D:\Git Code\Averages\Averages\bin\Debug\Averages.pdb
+D:\Git Code\AveragesCodeChallenge\Averages\obj\x86\Debug\Averages.csprojResolveAssemblyReference.cache
+D:\Git Code\AveragesCodeChallenge\Averages\obj\x86\Debug\Averages.exe
+D:\Git Code\AveragesCodeChallenge\Averages\obj\x86\Debug\Averages.pdb
+D:\Git Code\AveragesCodeChallenge\Averages\bin\Debug\Averages.exe
+D:\Git Code\AveragesCodeChallenge\Averages\bin\Debug\Averages.pdb
