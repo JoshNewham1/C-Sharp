@@ -13,6 +13,7 @@ namespace ConsoleApplication1
             string numberlist;
             string endofprogram;
             int tempMean = 0;
+            int middlenumber;
             while (true) {
                 Console.Clear();
                 Console.WriteLine("-=-=-=-=-=-=-=-=-=-=-=");
@@ -29,6 +30,10 @@ namespace ConsoleApplication1
                     }
                     double totalMean = tempMean / split.Length + 1;
                     Console.WriteLine("The mean of these numbers is " + totalMean);
+                }
+                if (typeofaverage == "median" || typeofaverage == "Median") {
+                    middlenumber = (split.Length / 2);
+                    Console.WriteLine("The median of the list is " + split[middlenumber]);
                 }
                 Console.WriteLine("Type 'Q' to quit or press enter to calculate another average. ");
                 endofprogram = Console.ReadLine();
