@@ -1,0 +1,5 @@
+C:\Users\joshn\Downloads\Averages-20170513T062108Z-001\Averages\Averages\bin\Debug\Averages.exe
+C:\Users\joshn\Downloads\Averages-20170513T062108Z-001\Averages\Averages\bin\Debug\Averages.pdb
+C:\Users\joshn\Downloads\Averages-20170513T062108Z-001\Averages\Averages\obj\x86\Debug\Averages.csprojResolveAssemblyReference.cache
+C:\Users\joshn\Downloads\Averages-20170513T062108Z-001\Averages\Averages\obj\x86\Debug\Averages.exe
+C:\Users\joshn\Downloads\Averages-20170513T062108Z-001\Averages\Averages\obj\x86\Debug\Averages.pdb
