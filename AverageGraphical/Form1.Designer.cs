@@ -30,6 +30,7 @@ namespace AverageGraphical
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.label1 = new System.Windows.Forms.Label();
             this.typeofaverage = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -91,7 +92,7 @@ namespace AverageGraphical
             // 
             // numberlist
             // 
-            this.numberlist.Location = new System.Drawing.Point(16, 148);
+            this.numberlist.Location = new System.Drawing.Point(16, 164);
             this.numberlist.Name = "numberlist";
             this.numberlist.Size = new System.Drawing.Size(333, 20);
             this.numberlist.TabIndex = 7;
@@ -130,8 +131,10 @@ namespace AverageGraphical
             this.Controls.Add(this.label2);
             this.Controls.Add(this.typeofaverage);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.Text = "Josh\'s Average Calculator";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
