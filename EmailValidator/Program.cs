@@ -83,6 +83,7 @@ namespace EmailValidator
                     if (loadfromtextfile == "y" || loadfromtextfile == "Y")
                     {
                         StreamReader sr = new StreamReader("C:\\Users\\" + windowsusername + "\\Documents\\Emails.txt");
+                        counter = 1;
                         while ((line = sr.ReadLine()) != null)
                         {
                             hasSpaces = line.Contains(" ");
