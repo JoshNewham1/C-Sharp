@@ -4,9 +4,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using System.Text.RegularExpressions;
 
 namespace PasswordChecker
 {
+    public enum PasswordScore
+    {
+        VeryWeak = 0,
+        Weak = 1,
+        Medium = 2,
+        Strong = 3,
+        VeryStrong = 4
+    } 
     class Program
     {
         static void Main(string[] args)
@@ -50,10 +59,39 @@ namespace PasswordChecker
                         confirmedPassword = Console.ReadLine();
                     }
 
+                    Console.WriteLine("The password you have entered is valid.");
+                    PasswordScore score = CheckStrength(password);
+                    Console.WriteLine("Your password is of " + score + " strength");
+                    Console.WriteLine("Press enter to check another password");
+                    Console.ReadLine();
+                    Console.Clear();
                 }
 
             }
 
+            
+
+        }
+        public static PasswordScore CheckStrength(string password)
+        {
+            int score = 0;
+            if (password.Length >= 8) // If the length is above or equal to 8
+            {
+                score++;
+            }
+            if (password.Length >= 10) // If the length is above or equal to 10
+            {
+                score++;
+            }
+            if (Regex.Match(password, @"[!,@,#,$,%,^,&,*,?,_,~,-,£,(,)]", RegexOptions.ECMAScript).Success) // If the password contains special characters
+            {
+                score++;
+            }
+            if (password.Any(char.IsDigit)) // If there is a number in the password
+            {
+                score++;
+            }
+            return (PasswordScore)score;
         }
     }
 }
