@@ -18,12 +18,19 @@ namespace PasswordChecker
     } 
     class Program
     {
+        public static string entireFile;
+        private static bool replaceText;
+
         static void Main(string[] args)
         {
             string loadfromtextfile;
             string password;
             string confirmedPassword;
             string windowsusername = Environment.UserName;
+            string specifiedUsername;
+            string oldPassword;
+            string newPassword;
+            
             Console.WriteLine("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
             Console.WriteLine("Welcome to Josh's Password Reset Program");
             Console.WriteLine("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
@@ -66,11 +73,49 @@ namespace PasswordChecker
                     Console.ReadLine();
                     Console.Clear();
                 }
+                if (loadfromtextfile == "y" || loadfromtextfile == "Y")
+                {
+                    StreamReader sr = new StreamReader("C:\\Users\\" + windowsusername + "\\Documents\\PasswordReset.txt");
+                    Console.WriteLine("Which username would you like to modify the password of?");
+                    specifiedUsername = Console.ReadLine();
+                    replaceText = false;
+                    while (!sr.EndOfStream) // Cycles through all of the lines of text in the txt file
+                    {
+                        var line = sr.ReadLine();
+                        if (string.IsNullOrEmpty(line)) continue;
+                        if (line.IndexOf(specifiedUsername, StringComparison.CurrentCultureIgnoreCase) >= 0) // Checks if the user has typed a valid username
+                        {
+                            Console.WriteLine("Please type the password you would like to change");
+                            oldPassword = Console.ReadLine();
+                            var nextLine = sr.ReadLine();
+                            if (nextLine.IndexOf(oldPassword, StringComparison.CurrentCultureIgnoreCase) >= 0) // Checks if the user has typed the password below that username
+                            {
+                                Console.WriteLine("What would you like your new password to be?");
+                                newPassword = Console.ReadLine();
+                                Console.WriteLine("Please confirm your new password");
+                                confirmedPassword = Console.ReadLine();
+                                if (newPassword == confirmedPassword)
+                                {
+                                    entireFile = File.ReadAllText("C:\\Users\\" + windowsusername + "\\Documents\\PasswordReset.txt");
+                                    entireFile = entireFile.Replace(oldPassword, newPassword);
+                                    replaceText = true;
+                                }
+                            }
+                        }
+                    }
+                    if (replaceText == true)
+                    {
+                        sr.Close();
+                        Console.WriteLine(entireFile);
+                        File.WriteAllText("C:\\Users\\" + windowsusername + "\\Documents\\PasswordReset.txt", entireFile);
+                    }
+                    
+
+                }
+
+
 
             }
-
-            
-
         }
         public static PasswordScore CheckStrength(string password)
         {
