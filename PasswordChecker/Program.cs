@@ -100,6 +100,8 @@ namespace PasswordChecker
                                     entireFile = File.ReadAllText("C:\\Users\\" + windowsusername + "\\Documents\\PasswordReset.txt");
                                     entireFile = entireFile.Replace(oldPassword, newPassword);
                                     replaceText = true;
+                                    PasswordScore score = CheckStrength(newPassword);
+                                    Console.WriteLine("Your password is of " + score + " strength");
                                 }
                             }
                             if (nextLine.IndexOf(oldPassword, StringComparison.CurrentCultureIgnoreCase) == 1)
@@ -111,7 +113,6 @@ namespace PasswordChecker
                     if (replaceText == true)
                     {
                         sr.Close();
-                        Console.WriteLine(entireFile);
                         File.WriteAllText("C:\\Users\\" + windowsusername + "\\Documents\\PasswordReset.txt", entireFile);
                         Console.WriteLine("Press enter to continue...");
                         Console.ReadLine();
