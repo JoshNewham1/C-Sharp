@@ -81,9 +81,9 @@ namespace PasswordChecker
                     replaceText = false;
                     while (!sr.EndOfStream) // Cycles through all of the lines of text in the txt file
                     {
-                        var line = sr.ReadLine();
-                        if (string.IsNullOrEmpty(line)) continue;
-                        if (line.IndexOf(specifiedUsername, StringComparison.CurrentCultureIgnoreCase) >= 0) // Checks if the user has typed a valid username
+                        string username = sr.ReadLine();
+                        string[] usernameSplit = username.Split(' ');
+                        if (specifiedUsername == usernameSplit[1]) // Checks if the user has typed a valid username
                         {
                             Console.WriteLine("Please type the password you would like to change");
                             oldPassword = Console.ReadLine();
