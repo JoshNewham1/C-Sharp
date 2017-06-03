@@ -87,8 +87,9 @@ namespace PasswordChecker
                         {
                             Console.WriteLine("Please type the password you would like to change");
                             oldPassword = Console.ReadLine();
-                            var nextLine = sr.ReadLine();
-                            if (nextLine.IndexOf(oldPassword, StringComparison.CurrentCultureIgnoreCase) >= 0) // Checks if the user has typed the password below that username
+                            string nextLine = sr.ReadLine();
+                            string[] nextLineSplit = nextLine.Split(' ');
+                            if (oldPassword == nextLineSplit[1]) // Checks if the user has typed the password below that username
                             {
                                 Console.WriteLine("What would you like your new password to be?");
                                 newPassword = Console.ReadLine();
@@ -101,6 +102,10 @@ namespace PasswordChecker
                                     replaceText = true;
                                 }
                             }
+                            if (nextLine.IndexOf(oldPassword, StringComparison.CurrentCultureIgnoreCase) == 1)
+                            {
+                                break;
+                            } 
                         }
                     }
                     if (replaceText == true)
@@ -108,6 +113,16 @@ namespace PasswordChecker
                         sr.Close();
                         Console.WriteLine(entireFile);
                         File.WriteAllText("C:\\Users\\" + windowsusername + "\\Documents\\PasswordReset.txt", entireFile);
+                        Console.WriteLine("Press enter to continue...");
+                        Console.ReadLine();
+                        Console.Clear();
+                    }
+
+                    if (replaceText == false)
+                    {
+                        Console.WriteLine("You have typed the wrong username/password. Please try again.");
+                        Console.ReadLine();
+                        Console.Clear();
                     }
                     
 
