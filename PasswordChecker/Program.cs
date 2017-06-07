@@ -22,6 +22,9 @@ namespace PasswordChecker
         public static string entireFile;
         private static bool replaceText;
         private static string input;
+        private static string keyword = "abcdefghijklmnopqrstuvwxyz";
+        private static string encryptResult;
+        private static string decryptResult;
 
         static void Main(string[] args)
         {
@@ -93,14 +96,12 @@ namespace PasswordChecker
                     while (!sr.EndOfStream) // Cycles through all of the lines of text in the txt file
                     {
                         string username = sr.ReadLine();
-                        string[] usernameSplit = username.Split(' ');
-                        if (specifiedUsername == usernameSplit[1]) // Checks if the user has typed a valid username
+                        if (specifiedUsername == username) // Checks if the user has typed a valid username
                         {
                             Console.WriteLine("Please type the password you would like to change");
                             string oldPassword = ReadPassword();
                             string nextLine = sr.ReadLine();
-                            string[] nextLineSplit = nextLine.Split(' ');
-                            if (oldPassword == nextLineSplit[1]) // Checks if the user has typed the password below that username
+                            if (oldPassword == nextLine) // Checks if the user has typed the password below that username
                             {
                                 Console.WriteLine("What would you like your new password to be?");
                                 newPassword = ReadPassword();
@@ -144,19 +145,8 @@ namespace PasswordChecker
                 {
                     Console.WriteLine("Please type the password you would like to encrypt: ");
                     input = Console.ReadLine();
-                    string keyword = "abcdefghijklmnopqrstuvwxyz";
-                    // Get the bytes of the string
-                    byte[] bytesToBeEncrypted = Encoding.UTF8.GetBytes(input);
-                    byte[] keywordBytes = Encoding.UTF8.GetBytes(keyword);
-
-                    // Hash the password with SHA256
-                    keywordBytes = SHA256.Create().ComputeHash(keywordBytes);
-
-                    byte[] bytesEncrypted = AES_Encrypt(bytesToBeEncrypted, keywordBytes);
-
-                    string result = Convert.ToBase64String(bytesEncrypted);
-
-                    Console.WriteLine(result);
+                    EncryptText(input, keyword);
+                    Console.WriteLine(encryptResult);
                     Console.ReadLine();
                     Console.Clear();
                 }
@@ -164,17 +154,9 @@ namespace PasswordChecker
                 if (menuoption == "d" || menuoption == "D")
                 {
                     Console.WriteLine("Please type the hash created from the encryption: ");
-                    string input = Console.ReadLine();
-                    string keyword = "abcdefghijklmnopqrstuvwxyz";
-                    // Get the bytes of the string
-                    byte[] bytesToBeDecrypted = Convert.FromBase64String(input);
-                    byte[] passwordBytes = Encoding.UTF8.GetBytes(keyword);
-                    passwordBytes = SHA256.Create().ComputeHash(passwordBytes);
-
-                    byte[] bytesDecrypted = AES_Decrypt(bytesToBeDecrypted, passwordBytes);
-
-                    string result = Encoding.UTF8.GetString(bytesDecrypted);
-                    Console.WriteLine(result);
+                    input = Console.ReadLine();
+                    DecryptText(input, keyword);
+                    Console.WriteLine(decryptResult);
                     Console.ReadLine();
                     Console.Clear();
 
@@ -182,6 +164,37 @@ namespace PasswordChecker
 
 
 
+            }
+            string DecryptText(string input, string keyword)
+            {
+                // Get the bytes of the string
+                byte[] bytesToBeDecrypted = Convert.FromBase64String(input);
+                byte[] passwordBytes = Encoding.UTF8.GetBytes(keyword);
+
+                // Hash the password with SHA256
+                passwordBytes = SHA256.Create().ComputeHash(passwordBytes);
+
+                byte[] bytesDecrypted = AES_Decrypt(bytesToBeDecrypted, passwordBytes);
+
+                decryptResult = Encoding.UTF8.GetString(bytesDecrypted);
+
+                return decryptResult;
+            }
+
+            string EncryptText(string input, string keyword)
+            {
+                // Get the bytes of the string
+                byte[] bytesToBeEncrypted = Encoding.UTF8.GetBytes(input);
+                byte[] passwordBytes = Encoding.UTF8.GetBytes(keyword);
+
+                // Hash the password with SHA256
+                passwordBytes = SHA256.Create().ComputeHash(passwordBytes);
+
+                byte[] bytesEncrypted = AES_Encrypt(bytesToBeEncrypted, passwordBytes);
+
+                encryptResult = Convert.ToBase64String(bytesEncrypted);
+
+                return encryptResult;
             }
         }
         public static string ReadPassword() // Method to place asterisks instead of password
@@ -223,8 +236,7 @@ namespace PasswordChecker
         {
             byte[] encryptedBytes = null;
 
-            // Set your salt here, change it to meet your flavor:
-            // The salt bytes must be at least 8 bytes.
+            // Salt is set here and must be at least 8 bytes
             byte[] saltBytes = new byte[] { 1, 2, 3, 4, 5, 6, 7, 8 };
 
             using (MemoryStream ms = new MemoryStream())
@@ -284,6 +296,8 @@ namespace PasswordChecker
 
             return decryptedBytes;
         }
+
+        
 
 
         public static PasswordScore CheckStrength(string password)
