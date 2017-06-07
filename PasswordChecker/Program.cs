@@ -22,9 +22,11 @@ namespace PasswordChecker
         public static string entireFile;
         private static bool replaceText;
         private static string input;
-        private static string keyword = "abcdefghijklmnopqrstuvwxyz";
+        private static string keyword = "abcdefghijklmnopqrstuvwxyz"; // keyword that the generation of the hash is based off
+                                                                      // (the alphabet is not the most secure keyword but this can be changed by the user and all future encryptions/decryptions will use it)
         private static string encryptResult;
         private static string decryptResult;
+        private static string decryptedPassword;
 
         static void Main(string[] args)
         {
@@ -46,14 +48,14 @@ namespace PasswordChecker
                 Console.WriteLine("(E)ncrypt a password");
                 Console.WriteLine("(D)ecrypt a password");
                 Console.WriteLine("E(x)it the program");
-                menuoption = Console.ReadLine();
+                menuoption = Console.ReadLine().ToUpper();
 
-                if (menuoption == "x" || menuoption == "X")
+                if (menuoption == "X")
                 {
                     Environment.Exit(0);
                 }
 
-                if (menuoption == "c" || menuoption == "C")
+                if (menuoption == "C")
                 {
                     Console.WriteLine("Please input a password");
                     password = ReadPassword();
@@ -87,7 +89,7 @@ namespace PasswordChecker
                     Console.ReadLine();
                     Console.Clear();
                 }
-                if (menuoption == "r" || menuoption == "R")
+                if (menuoption == "R")
                 {
                     StreamReader sr = new StreamReader("C:\\Users\\" + windowsusername + "\\Documents\\PasswordReset.txt");
                     Console.WriteLine("Which username would you like to modify the password of?");
@@ -101,16 +103,31 @@ namespace PasswordChecker
                             Console.WriteLine("Please type the password you would like to change");
                             string oldPassword = ReadPassword();
                             string nextLine = sr.ReadLine();
-                            if (oldPassword == nextLine) // Checks if the user has typed the password below that username
+                            DecryptText(nextLine, keyword);
+                            decryptedPassword = decryptResult;
+                            if (oldPassword == decryptedPassword) // Checks if the user has typed the password below that username
                             {
                                 Console.WriteLine("What would you like your new password to be?");
                                 newPassword = ReadPassword();
+                                while (newPassword.Length < 8)
+                                {
+                                    Console.WriteLine("Invalid password - please use 8 or more characters");
+                                    newPassword = ReadPassword();
+                                }
+
+                                while (newPassword.Any(char.IsUpper) != true || newPassword.Any(char.IsLower) != true)
+                                {
+                                    Console.WriteLine("Invalid password - please use a mixture of upper and lower case characters");
+                                    newPassword = ReadPassword();
+                                }
                                 Console.WriteLine("Please confirm your new password");
                                 confirmedPassword = ReadPassword();
                                 if (newPassword == confirmedPassword)
                                 {
+                                    EncryptText(newPassword, keyword);
+                                    newPassword = encryptResult;
                                     entireFile = File.ReadAllText("C:\\Users\\" + windowsusername + "\\Documents\\PasswordReset.txt");
-                                    entireFile = entireFile.Replace(oldPassword, newPassword);
+                                    entireFile = entireFile.Replace(nextLine, newPassword);
                                     replaceText = true;
                                     PasswordScore score = CheckStrength(newPassword);
                                     Console.WriteLine("Your password is of " + score + " strength");
@@ -141,7 +158,7 @@ namespace PasswordChecker
 
                 }
 
-                if (menuoption == "e" || menuoption == "E")
+                if (menuoption == "E")
                 {
                     Console.WriteLine("Please type the password you would like to encrypt: ");
                     input = Console.ReadLine();
@@ -151,7 +168,7 @@ namespace PasswordChecker
                     Console.Clear();
                 }
 
-                if (menuoption == "d" || menuoption == "D")
+                if (menuoption == "D")
                 {
                     Console.WriteLine("Please type the hash created from the encryption: ");
                     input = Console.ReadLine();
@@ -165,37 +182,7 @@ namespace PasswordChecker
 
 
             }
-            string DecryptText(string input, string keyword)
-            {
-                // Get the bytes of the string
-                byte[] bytesToBeDecrypted = Convert.FromBase64String(input);
-                byte[] passwordBytes = Encoding.UTF8.GetBytes(keyword);
-
-                // Hash the password with SHA256
-                passwordBytes = SHA256.Create().ComputeHash(passwordBytes);
-
-                byte[] bytesDecrypted = AES_Decrypt(bytesToBeDecrypted, passwordBytes);
-
-                decryptResult = Encoding.UTF8.GetString(bytesDecrypted);
-
-                return decryptResult;
-            }
-
-            string EncryptText(string input, string keyword)
-            {
-                // Get the bytes of the string
-                byte[] bytesToBeEncrypted = Encoding.UTF8.GetBytes(input);
-                byte[] passwordBytes = Encoding.UTF8.GetBytes(keyword);
-
-                // Hash the password with SHA256
-                passwordBytes = SHA256.Create().ComputeHash(passwordBytes);
-
-                byte[] bytesEncrypted = AES_Encrypt(bytesToBeEncrypted, passwordBytes);
-
-                encryptResult = Convert.ToBase64String(bytesEncrypted);
-
-                return encryptResult;
-            }
+            
         }
         public static string ReadPassword() // Method to place asterisks instead of password
         {
@@ -232,6 +219,38 @@ namespace PasswordChecker
             return password;
         }
 
+        public static string DecryptText(string input, string keyword)
+        {
+            // Get the bytes of the string
+            byte[] bytesToBeDecrypted = Convert.FromBase64String(input);
+            byte[] passwordBytes = Encoding.UTF8.GetBytes(keyword);
+
+            // Hash the password with SHA256
+            passwordBytes = SHA256.Create().ComputeHash(passwordBytes);
+
+            byte[] bytesDecrypted = AES_Decrypt(bytesToBeDecrypted, passwordBytes);
+
+            decryptResult = Encoding.UTF8.GetString(bytesDecrypted);
+
+            return decryptResult;
+        }
+
+        public static string EncryptText(string input, string keyword)
+        {
+            // Get the bytes of the string
+            byte[] bytesToBeEncrypted = Encoding.UTF8.GetBytes(input);
+            byte[] passwordBytes = Encoding.UTF8.GetBytes(keyword);
+
+            // Hash the password with SHA256
+            passwordBytes = SHA256.Create().ComputeHash(passwordBytes);
+
+            byte[] bytesEncrypted = AES_Encrypt(bytesToBeEncrypted, passwordBytes);
+
+            encryptResult = Convert.ToBase64String(bytesEncrypted);
+
+            return encryptResult;
+        }
+
         public static byte[] AES_Encrypt(byte[] bytesToBeEncrypted, byte[] passwordBytes)
         {
             byte[] encryptedBytes = null;
@@ -243,21 +262,27 @@ namespace PasswordChecker
             {
                 using (RijndaelManaged AES = new RijndaelManaged())
                 {
+                    // Sets the maximum size of the key (larger keysize = more possibilities)
                     AES.KeySize = 256;
+                    // The size of the block of data that is being encrypted (Rijndael has a fixed block size of 128)
                     AES.BlockSize = 128;
 
+                    // Takes a password, salt and iteration count and generates the key
                     var key = new Rfc2898DeriveBytes(passwordBytes, saltBytes, 1000);
+                    // Sets the key for the encryption
                     AES.Key = key.GetBytes(AES.KeySize / 8);
+                    // Sets the initialisation vector for the encryption (required to generate random keys)
                     AES.IV = key.GetBytes(AES.BlockSize / 8);
-
+                    // Sets CBC (Cipher Block Chaining) as the mode of operation for AES
                     AES.Mode = CipherMode.CBC;
 
                     using (var cs = new CryptoStream(ms, AES.CreateEncryptor(), CryptoStreamMode.Write))
                     {
+                        // Writes the bytes to CryptoStream which then encrypts them
                         cs.Write(bytesToBeEncrypted, 0, bytesToBeEncrypted.Length);
                         cs.Close();
                     }
-                    encryptedBytes = ms.ToArray();
+                    encryptedBytes = ms.ToArray(); // Takes the encrypted bytes from the Memory Stream and adds them to an array
                 }
             }
 
@@ -268,29 +293,34 @@ namespace PasswordChecker
         {
             byte[] decryptedBytes = null;
 
-            // Set your salt here, change it to meet your flavor:
-            // The salt bytes must be at least 8 bytes.
+            // Salt is set here and must be at least 8 bytes
             byte[] saltBytes = new byte[] { 1, 2, 3, 4, 5, 6, 7, 8 };
 
             using (MemoryStream ms = new MemoryStream())
             {
                 using (RijndaelManaged AES = new RijndaelManaged())
                 {
+                    // Sets the maximum size of the key (larger keysize = more possibilities)
                     AES.KeySize = 256;
+                    // The size of the block of data that is being decrypted (Rijndael has a fixed block size of 128)
                     AES.BlockSize = 128;
 
+                    // Takes a password, salt and iteration count and generates the key
                     var key = new Rfc2898DeriveBytes(passwordBytes, saltBytes, 1000);
+                    // Sets the key for the decryption
                     AES.Key = key.GetBytes(AES.KeySize / 8);
+                    // Sets the initialisation vector for the encryption (required to generate random keys)
                     AES.IV = key.GetBytes(AES.BlockSize / 8);
-
+                    // Sets CBC (Cipher Block Chaining) as the mode of operation for AES
                     AES.Mode = CipherMode.CBC;
 
                     using (var cs = new CryptoStream(ms, AES.CreateDecryptor(), CryptoStreamMode.Write))
                     {
+                        // Writes the bytes to CryptoStream which then encrypts them
                         cs.Write(bytesToBeDecrypted, 0, bytesToBeDecrypted.Length);
                         cs.Close();
                     }
-                    decryptedBytes = ms.ToArray();
+                    decryptedBytes = ms.ToArray(); // Takes the encrypted bytes from the Memory Stream and adds them to an array
                 }
             }
 
