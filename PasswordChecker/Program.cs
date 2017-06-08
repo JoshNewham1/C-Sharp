@@ -27,13 +27,14 @@ namespace PasswordChecker
         private static string encryptResult;
         private static string decryptResult;
         private static string decryptedPassword;
+        private static  string windowsusername = Environment.UserName;
+        private static string path = "C:\\Users\\" + windowsusername + "\\Documents\\PasswordReset.txt";
 
         static void Main(string[] args)
         {
             string menuoption;
             string password;
             string confirmedPassword;
-            string windowsusername = Environment.UserName;
             string specifiedUsername;
             string newPassword;
 
@@ -46,8 +47,9 @@ namespace PasswordChecker
                 Console.WriteLine("(C)heck a password and determine its strength");
                 Console.WriteLine("(R)eset a password in the text document");
                 Console.WriteLine("(A)dd a username and password to the text document");
-                Console.WriteLine("(E)ncrypt a password");
-                Console.WriteLine("(D)ecrypt a password");
+                Console.WriteLine("(O)mit a username and password from the text document");
+                Console.WriteLine("(E)ncrypt a password manually");
+                Console.WriteLine("(D)ecrypt a password manually");
                 Console.WriteLine("E(x)it the program");
                 menuoption = Console.ReadLine().ToUpper();
 
@@ -92,7 +94,7 @@ namespace PasswordChecker
                 }
                 if (menuoption == "R")
                 {
-                    StreamReader sr = new StreamReader("C:\\Users\\" + windowsusername + "\\Documents\\PasswordReset.txt");
+                    StreamReader sr = new StreamReader(path);
                     Console.WriteLine("Which username would you like to modify the password of?");
                     specifiedUsername = Console.ReadLine();
                     replaceText = false;
@@ -127,7 +129,7 @@ namespace PasswordChecker
                                 {
                                     EncryptText(newPassword, keyword);
                                     newPassword = encryptResult;
-                                    entireFile = File.ReadAllText("C:\\Users\\" + windowsusername + "\\Documents\\PasswordReset.txt");
+                                    entireFile = File.ReadAllText(path);
                                     entireFile = entireFile.Replace(nextLine, newPassword);
                                     replaceText = true;
                                     PasswordScore score = CheckStrength(newPassword);
@@ -143,7 +145,7 @@ namespace PasswordChecker
                     if (replaceText == true)
                     {
                         sr.Close();
-                        File.WriteAllText("C:\\Users\\" + windowsusername + "\\Documents\\PasswordReset.txt", entireFile);
+                        File.WriteAllText(path, entireFile);
                         Console.WriteLine("Press enter to continue...");
                         Console.ReadLine();
                         Console.Clear();
@@ -161,7 +163,7 @@ namespace PasswordChecker
 
                 if (menuoption == "A")
                 {
-                    string [] entireFileArray = File.ReadAllLines("C:\\Users\\" + windowsusername + "\\Documents\\PasswordReset.txt");
+                    string [] entireFileArray = File.ReadAllLines(path);
                     Console.WriteLine("What would you like your new username to be? ");
                     string newUsername = Console.ReadLine();
                     bool usernameExists = entireFileArray.Contains(newUsername);
@@ -190,13 +192,56 @@ namespace PasswordChecker
                     {
                         EncryptText(NewPassword, keyword);
                         string encryptedPassword = encryptResult;
-                        using (StreamWriter sw = File.AppendText("C:\\Users\\" + windowsusername + "\\Documents\\PasswordReset.txt"))
+                        using (StreamWriter sw = File.AppendText(path))
                         {
                             sw.WriteLine(newUsername);
                             sw.WriteLine(encryptedPassword);
                         }
                     }
 
+                }
+
+                if (menuoption == "O")
+                {
+                    string[] entireFileArray = File.ReadAllLines(path);
+                    Console.WriteLine("Which username and password would you like to omit?");
+                    Console.WriteLine("Username:");
+                    string usernametoDelete = Console.ReadLine();
+                    Console.WriteLine("Password:");
+                    string passwordtoDelete = ReadPassword();
+                    bool usernameExists = entireFileArray.Contains(usernametoDelete);
+                    while (usernameExists != true)
+                    {
+                        Console.WriteLine("That username does not exist, please try again.");
+                        usernametoDelete = Console.ReadLine();
+                        usernameExists = entireFileArray.Contains(usernametoDelete);
+                    }
+                    EncryptText(passwordtoDelete, keyword);
+                    string encryptedPassword = encryptResult;
+                    bool passwordExists = entireFileArray.Contains(encryptedPassword);
+                    while (passwordExists != true)
+                    {
+                        Console.WriteLine("That password does not exist, please try again.");
+                        passwordtoDelete = ReadPassword();
+                        passwordExists = entireFileArray.Contains(usernametoDelete);
+                    }
+                    Console.WriteLine("Are you sure you would like to continue? Once they have been deleted, they cannot be recovered.");
+                    string deletePassword = Console.ReadLine().ToUpper();
+                    if (deletePassword == "Y")
+                    {
+                        for (int i = 0; i < entireFileArray.Length; i++) // Creates a for loop that will cycle through the file
+                        {
+                            string line = entireFileArray[i]; // Sets the variable line to the current line being checked
+                            if (line == usernametoDelete || line == encryptedPassword) // If the line has either the username or password that needs to be deleted
+                            {
+                                entireFileArray[i] = ""; // Set the line with the username/password to null
+                            }
+                                
+                        }
+                        string[] newFile = entireFileArray.Where(str => !string.IsNullOrEmpty(str)).ToArray(); // Defines a new array that takes the null area where the username/password was and omits it
+                        File.WriteAllLines(path, newFile); // Writes this new array to the text file
+
+                    }
                 }
 
                 if (menuoption == "E")
