@@ -45,6 +45,7 @@ namespace PasswordChecker
                 Console.WriteLine("Would you like to:");
                 Console.WriteLine("(C)heck a password and determine its strength");
                 Console.WriteLine("(R)eset a password in the text document");
+                Console.WriteLine("(A)dd a username and password to the text document");
                 Console.WriteLine("(E)ncrypt a password");
                 Console.WriteLine("(D)ecrypt a password");
                 Console.WriteLine("E(x)it the program");
@@ -155,6 +156,46 @@ namespace PasswordChecker
                         Console.Clear();
                     }
 
+
+                }
+
+                if (menuoption == "A")
+                {
+                    string [] entireFileArray = File.ReadAllLines("C:\\Users\\" + windowsusername + "\\Documents\\PasswordReset.txt");
+                    Console.WriteLine("What would you like your new username to be? ");
+                    string newUsername = Console.ReadLine();
+                    bool usernameExists = entireFileArray.Contains(newUsername);
+                    while (usernameExists == true) {
+                        Console.WriteLine("That username already exists, please pick again.");
+                        newUsername = Console.ReadLine();
+                        usernameExists = entireFileArray.Contains(newUsername);
+                    }
+                    Console.WriteLine("Please enter your new password.");
+                    string NewPassword = ReadPassword();
+                    while (NewPassword.Length < 8)
+                    {
+                        Console.WriteLine("Invalid password - please use 8 or more characters");
+                        NewPassword = ReadPassword();
+                    }
+
+                    while (NewPassword.Any(char.IsUpper) != true || NewPassword.Any(char.IsLower) != true)
+                    {
+                        Console.WriteLine("Invalid password - please use a mixture of upper and lower case characters");
+                        NewPassword = ReadPassword();
+                    }
+                    Console.WriteLine("Please confirm your new password.");
+                    string ConfirmedPassword = ReadPassword();
+
+                    if (ConfirmedPassword == NewPassword)
+                    {
+                        EncryptText(NewPassword, keyword);
+                        string encryptedPassword = encryptResult;
+                        using (StreamWriter sw = File.AppendText("C:\\Users\\" + windowsusername + "\\Documents\\PasswordReset.txt"))
+                        {
+                            sw.WriteLine(newUsername);
+                            sw.WriteLine(encryptedPassword);
+                        }
+                    }
 
                 }
 
