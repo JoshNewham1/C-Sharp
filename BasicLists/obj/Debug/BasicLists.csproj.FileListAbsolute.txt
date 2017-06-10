@@ -1,0 +1,6 @@
+D:\Git Code\BasicLists\BasicLists\bin\Debug\BasicLists.exe.config
+D:\Git Code\BasicLists\BasicLists\bin\Debug\BasicLists.exe
+D:\Git Code\BasicLists\BasicLists\bin\Debug\BasicLists.pdb
+D:\Git Code\BasicLists\BasicLists\obj\Debug\BasicLists.csprojResolveAssemblyReference.cache
+D:\Git Code\BasicLists\BasicLists\obj\Debug\BasicLists.exe
+D:\Git Code\BasicLists\BasicLists\obj\Debug\BasicLists.pdb
