@@ -17,6 +17,7 @@ namespace BasicLists
             int startSlice;
             int endSlice;
             int itemstoTake;
+            int elementToRemove;
             List<string> nameList = new List<string>();
             Console.WriteLine("-=-=-=-=-=-=-=-=-=-=-=-=-");
             Console.WriteLine("Josh's Basic List Program");
@@ -24,15 +25,16 @@ namespace BasicLists
 
             while (true)
             {
-                Console.WriteLine("Please type a name to add to the list or type 'l' to view the list");
+                Console.WriteLine("Please type a name to add to the list or type 'm' to view the menu");
                 name = Console.ReadLine();
-                if (name == "l" || name == "L")
+                if (name == "m" || name == "M")
                 {
                     Console.WriteLine("Would you like to:");
                     Console.WriteLine("Print them out in (o)rder");
                     Console.WriteLine("Print them out in (r)everse");
                     Console.WriteLine("(C)hoose which element to print out");
                     Console.WriteLine("Choose a (s)lice of elements to print out");
+                    Console.WriteLine("(D)elete an item from the list");
                     Console.WriteLine("E(x)it the program");
                     order = Console.ReadLine().ToUpper();
                     if (order == "O")
@@ -69,6 +71,12 @@ namespace BasicLists
                         {
                             Console.WriteLine(item);
                         }
+                    }
+                    if (order == "D")
+                    {
+                        Console.WriteLine("Which element would you like to remove?");
+                        elementToRemove = Int32.Parse(Console.ReadLine()) - 1;
+                        nameList.RemoveAt(elementToRemove);
                     }
                     if (order == "X")
                     {
