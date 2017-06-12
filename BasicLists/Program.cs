@@ -14,6 +14,9 @@ namespace BasicLists
             string order;
             string elementString;
             int elementInt;
+            int startSlice;
+            int endSlice;
+            int itemstoTake;
             List<string> nameList = new List<string>();
             Console.WriteLine("-=-=-=-=-=-=-=-=-=-=-=-=-");
             Console.WriteLine("Josh's Basic List Program");
@@ -29,6 +32,7 @@ namespace BasicLists
                     Console.WriteLine("Print them out in (o)rder");
                     Console.WriteLine("Print them out in (r)everse");
                     Console.WriteLine("(C)hoose which element to print out");
+                    Console.WriteLine("Choose a (s)lice of elements to print out");
                     Console.WriteLine("E(x)it the program");
                     order = Console.ReadLine().ToUpper();
                     if (order == "O")
@@ -52,6 +56,19 @@ namespace BasicLists
                         elementString = Console.ReadLine();
                         elementInt = Int32.Parse(elementString) - 1; // Add one because computers count from 0
                         Console.WriteLine(nameList[elementInt]);
+                    }
+                    if (order == "S")
+                    {
+                        Console.WriteLine("Where would you like your slice to start?");
+                        startSlice = Int32.Parse(Console.ReadLine()) - 1;
+                        Console.WriteLine("Where would you like your slice to end?");
+                        endSlice = Int32.Parse(Console.ReadLine());
+                        itemstoTake = endSlice - startSlice;
+                        string[] namelistSliced = nameList.GetRange(startSlice, itemstoTake).ToArray();
+                        foreach (string item in namelistSliced)
+                        {
+                            Console.WriteLine(item);
+                        }
                     }
                     if (order == "X")
                     {
