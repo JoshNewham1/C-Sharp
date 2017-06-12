@@ -37,6 +37,7 @@ namespace BasicLists
                     Console.WriteLine("Print them out in (r)everse");
                     Console.WriteLine("(C)hoose which element to print out");
                     Console.WriteLine("Choose a (s)lice of elements to print out");
+                    Console.WriteLine("Convert the list to (l)ower case (cleanse the list)");
                     Console.WriteLine("(D)elete an item from the list");
                     Console.WriteLine("(I)mport a list from a text document");
                     Console.WriteLine("(W)rite the list to a text document");
@@ -44,6 +45,7 @@ namespace BasicLists
                     menuChoice = Console.ReadLine().ToUpper();
                     if (menuChoice == "O")
                     {
+                        Console.WriteLine("-=-=-=-=-=-=-=-=-=-"); // Leaves a line so the input for the menu can be distinguished from the items of the list
                         for (int i = 0; i < nameList.Count; i++)
                         {
                             Console.WriteLine(nameList[i]);
@@ -51,6 +53,7 @@ namespace BasicLists
                     }
                     if (menuChoice == "R")
                     {
+                        Console.WriteLine("-=-=-=-=-=-=-=-=-=-"); // Leaves a line so the input for the menu can be distinguished from the items of the list
                         nameList.Reverse();
                         for (int i = 0; i < nameList.Count; i++)
                         {
@@ -61,6 +64,7 @@ namespace BasicLists
                     {
                         Console.WriteLine("Which element would you like to print?");
                         elementString = Console.ReadLine();
+                        Console.WriteLine("-=-=-=-=-=-=-=-=-=-"); // Leaves a line so the input for the menu can be distinguished from the items of the list
                         elementInt = Int32.Parse(elementString) - 1; // Add one because computers count from 0
                         Console.WriteLine(nameList[elementInt]);
                     }
@@ -72,10 +76,15 @@ namespace BasicLists
                         endSlice = Int32.Parse(Console.ReadLine());
                         itemstoTake = endSlice - startSlice;
                         string[] namelistSliced = nameList.GetRange(startSlice, itemstoTake).ToArray();
+                        Console.WriteLine("-=-=-=-=-=-=-=-=-=-"); // Leaves a line so the input for the menu can be distinguished from the items of the list
                         foreach (string item in namelistSliced)
                         {
                             Console.WriteLine(item);
                         }
+                    }
+                    if (menuChoice == "L")
+                    {
+                        nameList = nameList.ConvertAll(d => d.ToLower());
                     }
                     if (menuChoice == "D")
                     {
