@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace BasicLists
 {
@@ -11,13 +12,15 @@ namespace BasicLists
         static void Main(string[] args)
         {
             string name;
-            string order;
+            string menuChoice;
             string elementString;
             int elementInt;
             int startSlice;
             int endSlice;
             int itemstoTake;
             int elementToRemove;
+            string windowsusername = Environment.UserName;
+            string path = "C:\\Users\\" + windowsusername + "\\Documents\\namelist.txt";
             List<string> nameList = new List<string>();
             Console.WriteLine("-=-=-=-=-=-=-=-=-=-=-=-=-");
             Console.WriteLine("Josh's Basic List Program");
@@ -35,16 +38,18 @@ namespace BasicLists
                     Console.WriteLine("(C)hoose which element to print out");
                     Console.WriteLine("Choose a (s)lice of elements to print out");
                     Console.WriteLine("(D)elete an item from the list");
+                    Console.WriteLine("(I)mport a list from a text document");
+                    Console.WriteLine("(W)rite the list to a text document");
                     Console.WriteLine("E(x)it the program");
-                    order = Console.ReadLine().ToUpper();
-                    if (order == "O")
+                    menuChoice = Console.ReadLine().ToUpper();
+                    if (menuChoice == "O")
                     {
                         for (int i = 0; i < nameList.Count; i++)
                         {
                             Console.WriteLine(nameList[i]);
                         }
                     }
-                    if (order == "R")
+                    if (menuChoice == "R")
                     {
                         nameList.Reverse();
                         for (int i = 0; i < nameList.Count; i++)
@@ -52,14 +57,14 @@ namespace BasicLists
                             Console.WriteLine(nameList[i]);
                         }
                     }
-                    if (order == "C")
+                    if (menuChoice == "C")
                     {
                         Console.WriteLine("Which element would you like to print?");
                         elementString = Console.ReadLine();
                         elementInt = Int32.Parse(elementString) - 1; // Add one because computers count from 0
                         Console.WriteLine(nameList[elementInt]);
                     }
-                    if (order == "S")
+                    if (menuChoice == "S")
                     {
                         Console.WriteLine("Where would you like your slice to start?");
                         startSlice = Int32.Parse(Console.ReadLine()) - 1;
@@ -72,13 +77,23 @@ namespace BasicLists
                             Console.WriteLine(item);
                         }
                     }
-                    if (order == "D")
+                    if (menuChoice == "D")
                     {
                         Console.WriteLine("Which element would you like to remove?");
                         elementToRemove = Int32.Parse(Console.ReadLine()) - 1;
                         nameList.RemoveAt(elementToRemove);
                     }
-                    if (order == "X")
+                    if (menuChoice == "I")
+                    {
+                        nameList = File.ReadAllLines(path).ToList();
+                        Console.WriteLine("File read successfully...");
+                    }
+                    if (menuChoice == "W")
+                    {
+                        File.WriteAllLines(path, nameList);
+                        Console.WriteLine("Text file written to successfully...");
+                    }
+                    if (menuChoice == "X")
                     {
                         Environment.Exit(9);
                     }
