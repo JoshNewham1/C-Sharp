@@ -41,6 +41,7 @@ namespace LetterList
                         Console.WriteLine("(A)dd an item to the dictionary");
                         Console.WriteLine("(R)emove an item from the dictionary");
                         Console.WriteLine("(L)oad a list of words from a text file");
+                        Console.WriteLine("(W)rite a list of words to the text file");
                         Console.WriteLine("(P)rint the dictionary");
                         menuOption = Console.ReadLine().ToUpper();
 
@@ -62,6 +63,14 @@ namespace LetterList
                         {
                             dictionary = File.ReadAllLines(path).ToList();
                             Console.WriteLine("File read successfully.");
+                            Console.ReadLine();
+                            Console.Clear();
+                        }
+
+                        if (menuOption == "W")
+                        {
+                            File.WriteAllLines(path, dictionary);
+                            Console.WriteLine("File written to successfully.");
                             Console.ReadLine();
                             Console.Clear();
                         }
