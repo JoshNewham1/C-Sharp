@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace LetterList
 {
@@ -20,6 +21,8 @@ namespace LetterList
             string menuOption;
             string newEntry;
             string delEntry;
+            string windowsusername = Environment.UserName;
+            string path = "C:\\Users\\" + windowsusername + "\\Documents\\wordlist.txt";
             while (true)
             {
                 Console.WriteLine("Please choose a letter and I will print all of the words beginning with that letter. Type '\\' to go to the menu");
@@ -33,6 +36,7 @@ namespace LetterList
                         Console.WriteLine("Menu:");
                         Console.WriteLine("(A)dd an item to the dictionary");
                         Console.WriteLine("(R)emove an item from the dictionary");
+                        Console.WriteLine("(L)oad a list of words from a text file");
                         Console.WriteLine("(P)rint the dictionary");
                         menuOption = Console.ReadLine().ToUpper();
 
@@ -48,6 +52,14 @@ namespace LetterList
                             Console.WriteLine("Which item would you like to remove?");
                             delEntry = Console.ReadLine();
                             dictionary.Remove(delEntry);
+                        }
+
+                        if (menuOption == "L")
+                        {
+                            dictionary = File.ReadAllLines(path).ToList();
+                            Console.WriteLine("File read successfully.");
+                            Console.ReadLine();
+                            Console.Clear();
                         }
                         
                         if (menuOption == "P")
