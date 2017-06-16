@@ -22,7 +22,11 @@ namespace LetterList
             string newEntry;
             string delEntry;
             string windowsusername = Environment.UserName;
-            string path = "C:\\Users\\" + windowsusername + "\\Documents\\wordlist.txt";
+            string path = "C:\\Users\\" + windowsusername + "\\Documents\\wordlist.txt"; // Default path for text document
+            string firstLetter = "F"; // The program will default to chosing words based on their first letters if nothing is inputted
+
+            Console.WriteLine("Would you like to search words based on their (f)irst letters or (a)ll of their letters?");
+            firstLetter = Console.ReadLine().ToUpper();
             while (true)
             {
                 Console.WriteLine("Please choose a letter and I will print all of the words beginning with that letter. Type '\\' to go to the menu");
@@ -72,14 +76,32 @@ namespace LetterList
                     }
                     else if (Regex.IsMatch(inputLetter, @"^[\p{L}]+$"))
                     {
-                        foreach (string item in dictionary)
+                        if (firstLetter == "F")
                         {
-                            string itemSubstring = item.Substring(0, 1);
-                            if (itemSubstring == inputLetter || itemSubstring == inputLetter.ToUpper())
+                            foreach (string item in dictionary)
                             {
-                                Console.WriteLine(item);
+                                string itemSubstring = item.Substring(0, 1); // Cuts up the string in to just the first character (it is formatted characterposition, length)
+                                if (itemSubstring == inputLetter || itemSubstring == inputLetter.ToUpper()) // Checks if the character is equal to what the user inputted
+                                {
+                                    Console.WriteLine(item); // Prints the item if it is
+                                }
                             }
                         }
+                        else if (firstLetter == "A")
+                        {
+                            foreach (string item in dictionary) // For each item in the dictionary
+                            {
+                                for (int i = 0; i < item.Count(); i++) // Creates a for loop that will iterate the number of characters in the item
+                                {
+                                    string itemSubstring = item.Substring(i, 1); // Cuts up the string in to a character
+                                    if (itemSubstring == inputLetter || itemSubstring == inputLetter.ToUpper()) // Checks if the character is equal to what the user inputted
+                                    {
+                                        Console.WriteLine(item); // Prints the item if it is
+                                    }
+                                }
+                            }
+                        }
+                        
                     }
                     else
                     {
