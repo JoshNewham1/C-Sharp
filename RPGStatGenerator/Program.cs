@@ -187,7 +187,7 @@ namespace RPGStatGenerator
                 firstNameLetter = firstNameLetter.ToUpper();
                 firstName = firstNameLetter + firstName;
                 string lastName = "";
-                int numberofSyllablesInLastName = rnd.Next(2, 4);
+                int numberofSyllablesInLastName = rnd.Next(2, 3);
                 for (int i = 0; i < numberofSyllablesInLastName; i++)
                 {
                     lastName += lastnameSyllables[rnd.Next(0, lastnameSyllables.Length)];
