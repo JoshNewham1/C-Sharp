@@ -9,6 +9,8 @@ namespace RPGStatGenerator
 {
     class Program
     {
+
+        public static string name = "";
         static void Main(string[] args)
         {
             string[] race = { "Dragonborn", "Dwarf", "Eladrin", "Elf", "Gnome", "Half-elf", "Half-orc", "Halfling", "Human", "Tiefling" };
@@ -46,6 +48,9 @@ namespace RPGStatGenerator
                 Console.WriteLine("-=-=-=-=-=-=-=-=-=-=-=-=-");
                 Console.WriteLine("Josh's RPG Stat Generator");
                 Console.WriteLine("-=-=-=-=-=-=-=-=-=-=-=-=-");
+                // Generate the character's name
+                CreateName();
+                Console.WriteLine("First Name: " + name);
                 // Generate the character's race
                 Random rnd = new Random();
                 rndRace = rnd.Next(0, race.Length);
@@ -130,6 +135,7 @@ namespace RPGStatGenerator
                     StreamWriter txtfile = new StreamWriter(path, append: true);
                     txtfile.WriteLine("-=-=-=-=-=-=-=-=-=-=-=-");
                     txtfile.WriteLine("Character No. " + count);
+                    txtfile.WriteLine("Name: " + name);
                     txtfile.WriteLine("Race: " + characterRace);
                     txtfile.WriteLine("Gender: " + characterGender);
                     txtfile.WriteLine("Strength: " + rndStrength);
@@ -160,11 +166,40 @@ namespace RPGStatGenerator
                         txtfile.WriteLine("Spell-like ability: No");
                     }
                     txtfile.Close();
-                    
+                    Console.WriteLine("Written to text file successfully.");
+                    Console.ReadLine();
                 }
-                Console.ReadLine();
+                
             }
-            
+            string CreateName()
+            {
+                Random rnd = new Random();
+                string[] firstnameSyllables = { "mon", "fay", "shi", "zag", "blarg", "rash", "izen", "ro", "shan", "von" };
+                string[] lastnameSyllables = { "rah", "osu", "come", "stalker", "fer", "young", "dan", "dusk", "helm", "le", "spell", "bane", "fire", "water", "blade", "peace", "luna", "morning" };
+                string firstName = "";
+                int numberofSyllablesInFirstName = rnd.Next(2, 4);
+                for (int i = 0; i < numberofSyllablesInFirstName; i++)
+                {
+                    firstName += firstnameSyllables[rnd.Next(0, firstnameSyllables.Length)];
+                }
+                string firstNameLetter = firstName.Substring(0, 1);
+                firstName = firstName.Remove(0, 1);
+                firstNameLetter = firstNameLetter.ToUpper();
+                firstName = firstNameLetter + firstName;
+                string lastName = "";
+                int numberofSyllablesInLastName = rnd.Next(2, 4);
+                for (int i = 0; i < numberofSyllablesInLastName; i++)
+                {
+                    lastName += lastnameSyllables[rnd.Next(0, lastnameSyllables.Length)];
+                }
+                string lastnameLetter = lastName.Substring(0, 1);
+                lastName = lastName.Remove(0, 1);
+                lastnameLetter = lastnameLetter.ToUpper();
+                lastName = lastnameLetter + lastName;
+                name = firstName + " " + lastName;
+                return name;
+            }
         }
+        
     }
 }
