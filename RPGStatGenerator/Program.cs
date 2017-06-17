@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,14 +24,21 @@ namespace RPGStatGenerator
             float leftoverPoints;
             int leftoverPointsInt;
             int extraordinaryChance;
+            bool extraordinaryAbility = false;
             int supernaturalChance;
+            bool supernaturalAbility = false;
             string[] supernaturalAbilities = { "Antimagic field", "Null psionics field" };
             int rndsupernaturalAbility;
-            string charactersupernaturalAbility;
+            string charactersupernaturalAbility = "";
             int spellLikeChance;
             string[] spellLikeAbilities = { "Dispel", "Spell resistance", "Antimagic field", "Attack of Opportunity" };
             int rndspellLikeAbility;
-            string characterspellLikeAbility;
+            bool spellLikeAbility = false;
+            string characterspellLikeAbility = "";
+            string savetotxtDoc;
+            string windowsusername = Environment.UserName;
+            string path = "C:\\Users\\" + windowsusername + "\\Documents\\RPGCharacters.txt";
+            int count = 0;
             while (true)
             {
                 totalPoints = 27;
@@ -79,10 +87,12 @@ namespace RPGStatGenerator
                 if (extraordinaryChance == 49)
                 {
                     Console.WriteLine("Extraordinary ability: Yes");
+                    extraordinaryAbility = true;
                 }
                 else
                 {
                     Console.WriteLine("Extraordinary ability: No");
+                    extraordinaryAbility = false;
                 }
                 // Supernatural abilities are magical and go away in an antimagic field
                 supernaturalChance = rnd.Next(1, 10); // 1 in 10 chance
@@ -90,10 +100,12 @@ namespace RPGStatGenerator
                 {
                     rndsupernaturalAbility = rnd.Next(0, supernaturalAbilities.Length);
                     charactersupernaturalAbility = supernaturalAbilities[rndsupernaturalAbility];
+                    supernaturalAbility = true;
                     Console.WriteLine("Supernatural ability: " + charactersupernaturalAbility);
                 }
                 else
                 {
+                    supernaturalAbility = false;
                     Console.WriteLine("Supernatural ability: No");
                 }
                 // Spell-like abilities are magical and just work like spells
@@ -102,11 +114,53 @@ namespace RPGStatGenerator
                 {
                     rndspellLikeAbility = rnd.Next(0, spellLikeAbilities.Length);
                     characterspellLikeAbility = spellLikeAbilities[rndspellLikeAbility];
+                    spellLikeAbility = true;
                     Console.WriteLine("Spell-like ability: " + characterspellLikeAbility);
                 }
                 else
                 {
+                    spellLikeAbility = false;
                     Console.WriteLine("Spell-like ability: No");
+                }
+                Console.WriteLine("Would you like to save your character to a text document? (Y) or (N)");
+                savetotxtDoc = Console.ReadLine().ToUpper();
+                if (savetotxtDoc == "Y")
+                {
+                    count++;
+                    StreamWriter txtfile = new StreamWriter(path, append: true);
+                    txtfile.WriteLine("-=-=-=-=-=-=-=-=-=-=-=-");
+                    txtfile.WriteLine("Character No. " + count);
+                    txtfile.WriteLine("Race: " + characterRace);
+                    txtfile.WriteLine("Gender: " + characterGender);
+                    txtfile.WriteLine("Strength: " + rndStrength);
+                    txtfile.WriteLine("Magic: " + rndMagic);
+                    txtfile.WriteLine("Dexterity: " + rndDexterity);
+                    if (extraordinaryAbility == true)
+                    {
+                        txtfile.WriteLine("Extraordinary ability: Yes");
+                    }
+                    else
+                    {
+                        txtfile.WriteLine("Extraordinary ability: No");
+                    }
+                    if (supernaturalAbility == true)
+                    {
+                        txtfile.WriteLine("Supernatural ability: " + charactersupernaturalAbility);
+                    }
+                    else
+                    {
+                        txtfile.WriteLine("Supernatural ability: No");
+                    }
+                    if (spellLikeAbility == true)
+                    {
+                        txtfile.WriteLine("Spell-like ability: " + characterspellLikeAbility);
+                    }
+                    else
+                    {
+                        txtfile.WriteLine("Spell-like ability: No");
+                    }
+                    txtfile.Close();
+                    
                 }
                 Console.ReadLine();
             }

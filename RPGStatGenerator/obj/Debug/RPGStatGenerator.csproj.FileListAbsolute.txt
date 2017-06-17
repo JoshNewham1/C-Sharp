@@ -4,3 +4,9 @@ D:\Git Code\RPGStatGenerator\RPGStatGenerator\RPGStatGenerator\bin\Debug\RPGStat
 D:\Git Code\RPGStatGenerator\RPGStatGenerator\RPGStatGenerator\obj\Debug\RPGStatGenerator.csprojResolveAssemblyReference.cache
 D:\Git Code\RPGStatGenerator\RPGStatGenerator\RPGStatGenerator\obj\Debug\RPGStatGenerator.exe
 D:\Git Code\RPGStatGenerator\RPGStatGenerator\RPGStatGenerator\obj\Debug\RPGStatGenerator.pdb
+D:\Git Code\RPGStatGenerator\RPGStatGenerator\bin\Debug\RPGStatGenerator.exe.config
+D:\Git Code\RPGStatGenerator\RPGStatGenerator\bin\Debug\RPGStatGenerator.exe
+D:\Git Code\RPGStatGenerator\RPGStatGenerator\bin\Debug\RPGStatGenerator.pdb
+D:\Git Code\RPGStatGenerator\RPGStatGenerator\obj\Debug\RPGStatGenerator.csprojResolveAssemblyReference.cache
+D:\Git Code\RPGStatGenerator\RPGStatGenerator\obj\Debug\RPGStatGenerator.exe
+D:\Git Code\RPGStatGenerator\RPGStatGenerator\obj\Debug\RPGStatGenerator.pdb
