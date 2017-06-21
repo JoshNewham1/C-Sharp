@@ -1,0 +1,17 @@
+C:\Users\y14cg.jnewham\AppData\Local\Temporary Projects\RPGStatGeneratorGraphical\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\y14cg.jnewham\AppData\Local\Temporary Projects\RPGStatGeneratorGraphical\obj\x86\Debug\RPGStatGeneratorGraphical.Form1.resources
+C:\Users\y14cg.jnewham\AppData\Local\Temporary Projects\RPGStatGeneratorGraphical\obj\x86\Debug\RPGStatGeneratorGraphical.Properties.Resources.resources
+C:\Users\y14cg.jnewham\AppData\Local\Temporary Projects\RPGStatGeneratorGraphical\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Users\y14cg.jnewham\AppData\Local\Temporary Projects\RPGStatGeneratorGraphical\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Users\y14cg.jnewham\AppData\Local\Temporary Projects\RPGStatGeneratorGraphical\bin\Debug\RPGStatGeneratorGraphical.exe
+C:\Users\y14cg.jnewham\AppData\Local\Temporary Projects\RPGStatGeneratorGraphical\bin\Debug\RPGStatGeneratorGraphical.pdb
+C:\Users\y14cg.jnewham\AppData\Local\Temporary Projects\RPGStatGeneratorGraphical\obj\x86\Debug\RPGStatGeneratorGraphical.exe
+C:\Users\y14cg.jnewham\AppData\Local\Temporary Projects\RPGStatGeneratorGraphical\obj\x86\Debug\RPGStatGeneratorGraphical.pdb
+D:\Git Code\RPGStatGeneratorGraphical\RPGStatGeneratorGraphical\bin\Debug\RPGStatGeneratorGraphical.exe
+D:\Git Code\RPGStatGeneratorGraphical\RPGStatGeneratorGraphical\bin\Debug\RPGStatGeneratorGraphical.pdb
+D:\Git Code\RPGStatGeneratorGraphical\RPGStatGeneratorGraphical\obj\x86\Debug\RPGStatGeneratorGraphical.csprojResolveAssemblyReference.cache
+D:\Git Code\RPGStatGeneratorGraphical\RPGStatGeneratorGraphical\obj\x86\Debug\RPGStatGeneratorGraphical.Form1.resources
+D:\Git Code\RPGStatGeneratorGraphical\RPGStatGeneratorGraphical\obj\x86\Debug\RPGStatGeneratorGraphical.Properties.Resources.resources
+D:\Git Code\RPGStatGeneratorGraphical\RPGStatGeneratorGraphical\obj\x86\Debug\RPGStatGeneratorGraphical.csproj.GenerateResource.Cache
+D:\Git Code\RPGStatGeneratorGraphical\RPGStatGeneratorGraphical\obj\x86\Debug\RPGStatGeneratorGraphical.exe
+D:\Git Code\RPGStatGeneratorGraphical\RPGStatGeneratorGraphical\obj\x86\Debug\RPGStatGeneratorGraphical.pdb
