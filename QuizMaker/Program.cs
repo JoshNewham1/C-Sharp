@@ -16,6 +16,12 @@ namespace QuizMaker
             public string Qs_answer { get; set; }
             public int Qs_difficulty { get; set; }
         }
+
+        public class HighScores
+        {
+            public int score { get; set; }
+            public string name { get; set; }
+        }
         static void Main(string[] args)
         {
             
@@ -40,6 +46,19 @@ namespace QuizMaker
             var questionslistRandomised = new List<string>();
             var answerslistRandomised = new List<string>();
             var difficultylistRandomised = new List<int>();
+            var highscoreList = new List<HighScores>();
+            string highscoresAnswer;
+            string showList = "";
+            string userName;
+            string defaultHighScoresText = @"=========================================================
+                                                                         
+| |  | (_)     | |      / ____|                        
+| |__| |_  __ _| |__   | (___   ___ ___  _ __ ___  ___ 
+|  __  | |/ _` | '_ \   \___ \ / __/ _ \| '__/ _ \/ __|
+| |  | | | (_| | | | |  ____) | (_| (_) | | |  __/\__ \
+|_|  |_|_|\__, |_| |_| |_____/ \___\___/|_|  \___||___/
+           __/ |                                       
+========= |___/==========================================";
 
             while (true)
             {
@@ -154,8 +173,42 @@ namespace QuizMaker
                             }
                         }
 
-                        Console.WriteLine("You scored " + points + " points. Well done. Press enter to go back to the menu.");
-                        Console.ReadLine();
+                        Console.WriteLine("You scored " + points + " points. Well done.");
+                        Console.WriteLine("Would you like to add your score to the High Scores table?");
+                        highscoresAnswer = Console.ReadLine().ToUpper();
+                        if (highscoresAnswer == "Y")
+                        {
+                            Console.WriteLine("What name would you like your High Score to be stored under? ");
+                            userName = Console.ReadLine();
+                            highscoreList.Add(new HighScores
+                            {
+                                score = points,
+                                name = userName
+                            });
+                            Console.WriteLine("Would you like to see the High Scores list?");
+                            showList = Console.ReadLine();
+                            if (showList == "Y" || showList == "y")
+                            {
+                                Console.Clear();
+                                Console.WriteLine(defaultHighScoresText);
+                                Console.WriteLine("           Name              Score");
+                                foreach (var curscores in highscoreList)
+                                { // curscore is an alias for the current record and highscorelist is the entire list
+                                    Console.WriteLine("{1}{0}", curscores.score, curscores.name.PadRight(29));
+                                }
+                                Console.ReadLine();
+                                Console.Clear();
+                            }
+                        }
+                        for (int i = 0; i < questionslistRandomised.Count; i++) // For every question that has been deleted
+                        {
+                            questionsList.Add(questionslistRandomised[i]); // Add the question back to questionsList so the quiz can be restarted
+                            answersList.Add(answerslistRandomised[i]); // Add the answer back to answersList so the quiz can be restarted
+                            difficultyList.Add(difficultylistRandomised[i]); // Add the difficulty level back to difficultyList so the quiz can be restarted
+                        }
+                        questionslistRandomised.Clear(); // Clears the randomised list, ready for the next quiz
+                        answerslistRandomised.Clear(); // Clears the randomised list, ready for the next quiz
+                        difficultylistRandomised.Clear(); // Clears the randomised list, ready for the next quiz
                     }
                     else if (numberofQuestions == 0) // If there are no questions
                     {
