@@ -12,9 +12,9 @@ namespace QuizMaker
     {
         public class QuizStructure
         {
-            public string qs_question { get; set; }
-            public string qs_answer { get; set; }
-            public int qs_difficulty { get; set; }
+            public string Qs_question { get; set; }
+            public string Qs_answer { get; set; }
+            public int Qs_difficulty { get; set; }
         }
         static void Main(string[] args)
         {
@@ -80,9 +80,9 @@ namespace QuizMaker
                         count++;
                         Quiz.Add(new QuizStructure()
                         {
-                            qs_question = question,
-                            qs_answer = answer,
-                            qs_difficulty = difficultyInt
+                            Qs_question = question,
+                            Qs_answer = answer,
+                            Qs_difficulty = difficultyInt
                         });
                     }
                     
@@ -113,9 +113,9 @@ namespace QuizMaker
                         {
                             JsonSerializerSettings settings = new JsonSerializerSettings(); // These are the settings for the serialiser
                             var rcvdData = JsonConvert.DeserializeObject<QuizStructure>(obj.ToString(), settings); // Deserialises the JSON record
-                            questionsList.Add(rcvdData.qs_question); // Adds the question to the questionsList
-                            answersList.Add(rcvdData.qs_answer); // Adds the answer to the answersList
-                            difficultyList.Add(rcvdData.qs_difficulty); // Adds the difficulty level to the difficultyList
+                            questionsList.Add(rcvdData.Qs_question); // Adds the question to the questionsList
+                            answersList.Add(rcvdData.Qs_answer); // Adds the answer to the answersList
+                            difficultyList.Add(rcvdData.Qs_difficulty); // Adds the difficulty level to the difficultyList
                         }
 
                     }
