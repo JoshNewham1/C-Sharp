@@ -12,12 +12,14 @@ namespace CheckIfPalindrome
         static void Main(string[] args)
         {
             char[] charArray;
+            var palindromesList = new List<string>();
             string input;
             string menuOption;
             string reversedInput;
             string windowsusername = Environment.UserName;
             string path = "C:\\Users\\" + windowsusername + "\\Documents\\palindromelist.txt";
             int numberofPalindromes = 0;
+            string printPalindromes;
 
             Console.WriteLine("-=-=-=-=-=-=-=-=-=-=-=-=-=");
             Console.WriteLine("Josh's Palindrome Checker");
@@ -73,7 +75,7 @@ namespace CheckIfPalindrome
 
                 if (menuOption == "R")
                 {
-                    StreamReader sr = new StreamReader(path);
+                    StreamReader sr = new StreamReader(path); // Creates a reader and specifies the path of the text file
                     while (!sr.EndOfStream)
                     {
                         input = sr.ReadLine().ToLower(); // Reads a line from the text document and converts it to lower case
@@ -83,13 +85,24 @@ namespace CheckIfPalindrome
                         if (reversedInput == input) // Checks if the reversed input is the same as the regular input
                         {
                             numberofPalindromes++; // Increments the numberofPalindromes
+                            palindromesList.Add(input); // Adds the palindrome to a list which can be printed later on
                         }
                     }
                     Console.WriteLine("-=-=-=-");
                     Console.WriteLine("Summary");
                     Console.WriteLine("-=-=-=-");
-                    Console.WriteLine("There were " + numberofPalindromes + " palindrome(s) in the text file");
-                    Console.ReadLine();
+                    Console.WriteLine("There were " + numberofPalindromes + " palindrome(s) in the text file"); // Tells the user how many palindromes were in the file
+                    Console.WriteLine("Would you like to print the words that were palindromes?"); // Asks the user if they would like to print the palindromes
+                    printPalindromes = Console.ReadLine().ToUpper(); // Reads the user's answer and converts it to upper case
+                    if (printPalindromes == "Y") // If the user typed Y
+                    {
+                        for (int i = 0; i < palindromesList.Count; i++) // For every palindrome in the list
+                        {
+                            Console.WriteLine(palindromesList[i]); // Print it out
+                        }
+                        Console.ReadLine(); // Wait for user input
+                        Console.Clear(); // Clear the console
+                    }
                 }
 
                 if (menuOption == "X")
