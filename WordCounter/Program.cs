@@ -12,7 +12,6 @@ namespace WordCounter
     {
         static void Main(string[] args)
         {
-            int count = 0;
             int totalWords = 0;
             string menuOption;
             string input = "";
@@ -35,72 +34,71 @@ namespace WordCounter
                 Console.WriteLine("E(x)it the program");
                 menuOption = Console.ReadLine().ToUpper();
 
-                while (menuOption == "A")
+                while (menuOption == "A") // If the user has chosen to add words manually
                 {
-                    Console.Clear();
-                    Console.WriteLine("Please write words that you would like to be counted or type 'M' to return to the menu.");
-                    input = Console.ReadLine();
-                    if (input.ToUpper() == "M")
+                    Console.Clear(); // Clear the console
+                    Console.WriteLine("Please write words that you would like to be counted or type 'M' to return to the menu."); // Asks the user to write words or type 'M' to return to the menu
+                    input = Console.ReadLine(); // Stores the input
+                    if (input.ToUpper() == "M") // If the input is 'M' or 'm'
                     {
-                        menuOption = "M";
-                        Console.Clear();
+                        menuOption = "M"; // End the while loop
+                        Console.Clear(); // Clear the console
                     }
                     else
                     {
-                        Console.WriteLine(CountWords(input) + " words");
-                        Console.ReadLine();
+                        Console.WriteLine(CountWords(input) + " words"); // Call the CountWords method and print the amount of words
+                        Console.ReadLine(); // Wait for user input
                     }
                     
                 }
 
-                if (menuOption == "R")
+                if (menuOption == "R") // If the user has chosen to read from a text file
                 {
-                    Console.Clear();
-                    if (File.Exists(path))
+                    Console.Clear(); // Clear the console
+                    if (File.Exists(path)) // Check if the text file exists to avoid a FileNotFoundException
                     {
-                        StreamReader sr = new StreamReader(path);
-                        while (!sr.EndOfStream)
+                        StreamReader sr = new StreamReader(path); // Creates a reader for the text file
+                        while (!sr.EndOfStream) // While there is text in the text file
                         {
-                            count++;
-                            input = sr.ReadLine();
-                            wordCountList.Add(CountWords(input));
+                            input = sr.ReadLine(); // Read a line from the text file in to a variable
+                            wordCountList.Add(CountWords(input)); // Add the input to a list for the summary
                         }
-                        Console.WriteLine("Would you like to see a summary? ");
-                        showSummary = Console.ReadLine().ToUpper();
-                        if (showSummary == "Y")
+                        Console.WriteLine("Would you like to see a summary? "); // Asks the user if they would like to see a summary
+                        showSummary = Console.ReadLine().ToUpper(); // Stores the answer in a variable
+                        if (showSummary == "Y") // If the user would like to show a summary
                         {
                             Console.WriteLine("-=-=-=-");
                             Console.WriteLine("Summary");
                             Console.WriteLine("-=-=-=-");
-                            for (int i = 0; i < wordCountList.Count; i++)
+                            for (int i = 0; i < wordCountList.Count; i++) // For every line in the list
                             {
-                                Console.WriteLine("The number of words in line " + (i + 1) + " is " + wordCountList[i]);
-                                totalWords += wordCountList[i];                                
+                                Console.WriteLine("The number of words in line " + (i + 1) + " is " + wordCountList[i]); // Prints how many words there are in the line
+                                totalWords += wordCountList[i]; // Adds the word count for one line to a total word count                     
                             }
-                            Console.WriteLine("The total number of words for the text document is " + totalWords);
-                            Console.ReadLine();
-                            Console.Clear();
+                            Console.WriteLine("The total number of words for the text document is " + totalWords); // Prints the total number of words
+                            Console.ReadLine(); // Waits for user input
+                            Console.Clear(); // Clears the console
                         }
                     }
-                    else
+                    else // If a text file doesn't exist
                     {
-                        Console.WriteLine("Please create a text file here: " + path);
-                        Console.ReadLine();
+                        Console.WriteLine("Please create a text file here: " + path); // Tell the user to create a text document in the path
+                        Console.ReadLine(); // Waits for user input
                     }
                     
                 }
 
-                if (menuOption == "X")
+                if (menuOption == "X") // If the user has chosen to exit
                 {
-                    Environment.Exit(9);
+                    Environment.Exit(9); // Exit with code 9
                 }
             }
         }
 
-        public static int CountWords (string input)
+        public static int CountWords (string input) // CountWords method
         {
-            MatchCollection words = Regex.Matches(input, @"[\S]+");
-            return words.Count;
+            MatchCollection words = Regex.Matches(input, @"[\S]+"); // Seperates each word using a space (\S)
+            return words.Count; // Counts how many times the words are seperated
         }
     }
 }
