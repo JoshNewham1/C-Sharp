@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,6 +18,8 @@ namespace VowelCounter
         {
             string menuOption;
             string input;
+            string windowsusername = Environment.UserName;
+            string path = "C:\\Users\\" + windowsusername + "\\Documents\\vowelcounter.txt";
             
             Console.WriteLine("-=-=-=-=-=-=-=-=-=-=");
             Console.WriteLine("Josh's Vowel Counter");
@@ -29,6 +32,7 @@ namespace VowelCounter
                 Console.WriteLine("-=-=");
                 Console.WriteLine("Would you like to:");
                 Console.WriteLine("(A)dd sentences manually");
+                Console.WriteLine("(R)ead sentences from a text file");
                 Console.WriteLine("E(x)it the program");
                 menuOption = Console.ReadLine().ToUpper();
                 while (menuOption == "A")
@@ -45,26 +49,69 @@ namespace VowelCounter
                         CountVowels(input);
                         Console.WriteLine("There are " + vowelCount + " vowels in the sentence");
                         Console.WriteLine("Vowels used:");
-                        if (aCount > 0)
+                        if (aCount > 0) // If there is any vowels beginning with 'a'
                         {
                             Console.WriteLine("A: " + aCount);
                         }
-                        if (eCount > 0)
+                        if (eCount > 0) // If there is any vowels beginning with 'e'
                         {
                             Console.WriteLine("E: " + eCount);
                         }
-                        if (iCount > 0)
+                        if (iCount > 0) // If there is any vowels beginning with 'i'
                         {
                             Console.WriteLine("I: " + iCount);
                         }
-                        if (oCount > 0)
+                        if (oCount > 0) // If there is any vowels beginning with 'o'
                         {
                             Console.WriteLine("O: " + oCount);
                         }
-                        if (uCount > 0)
+                        if (uCount > 0) // If there is any vowels beginning with 'u'
                         {
                             Console.WriteLine("U: " + uCount);
                         }
+                        Console.ReadLine();
+                    }
+                }
+                if (menuOption == "R")
+                {
+                    if (File.Exists(path)) // If the file exists
+                    {
+                        int count = 0; // Create a counter and set it to 0
+                        StreamReader sr = new StreamReader(path); // Create a new StreamReader reading the text file
+                        while (!sr.EndOfStream) // While it isn't the end of the text file
+                        {
+                            count++; // Increment the counter
+                            input = sr.ReadLine(); // Read in from the text file
+                            CountVowels(input); // Put the line from the text file through the CountVowels method
+                            Console.WriteLine("There are " + vowelCount + " vowels in line " + count); // Print total number of vowels
+                            Console.WriteLine("Vowels used in line" + count + ":");
+                            if (aCount > 0) // If there is any vowels beginning with 'a'
+                            {
+                                Console.WriteLine("A: " + aCount);
+                            }
+                            if (eCount > 0) // If there is any vowels beginning with 'e'
+                            {
+                                Console.WriteLine("E: " + eCount);
+                            }
+                            if (iCount > 0) // If there is any vowels beginning with 'i'
+                            {
+                                Console.WriteLine("I: " + iCount);
+                            }
+                            if (oCount > 0) // If there is any vowels beginning with 'o'
+                            {
+                                Console.WriteLine("O: " + oCount);
+                            }
+                            if (uCount > 0) // If there is any vowels beginning with 'u'
+                            {
+                                Console.WriteLine("U: " + uCount);
+                            }
+                            Console.ReadLine();
+                        }
+                        sr.Close(); // Close the StreamReader
+                    }
+                    else
+                    {
+                        Console.WriteLine("Please create a text file in: " + path);
                         Console.ReadLine();
                     }
                 }
