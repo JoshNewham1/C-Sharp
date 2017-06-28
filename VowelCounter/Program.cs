@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 namespace VowelCounter
 {
     class Program
@@ -18,11 +17,9 @@ namespace VowelCounter
             int iCount = 0;
             int oCount = 0;
             int uCount = 0;
-
             Console.WriteLine("-=-=-=-=-=-=-=-=-=-=");
             Console.WriteLine("Josh's Vowel Counter");
             Console.WriteLine("-=-=-=-=-=-=-=-=-=-=");
-
             while (true)
             {
                 Console.Clear();
@@ -32,9 +29,7 @@ namespace VowelCounter
                 Console.WriteLine("Would you like to:");
                 Console.WriteLine("(A)dd sentences manually");
                 Console.WriteLine("E(x)it the program");
-
                 menuOption = Console.ReadLine().ToUpper();
-
                 while (menuOption == "A")
                 {
                     Console.Clear();
@@ -94,6 +89,10 @@ namespace VowelCounter
                         }
                         Console.ReadLine();
                     }
+                }
+                if (menuOption == "X")
+                {
+                    Environment.Exit(9);
                 }
             }
         }
