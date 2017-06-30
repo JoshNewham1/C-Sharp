@@ -37,16 +37,7 @@ namespace MastermindCodeChallenge
             var highscoreList = new List<HighScores>();
             string highScoresAnswer;
             string showList = "";
-            string defaultHighScoresText = @"=========================================================
-                                                                         
-| |  | (_)     | |      / ____|                        
-| |__| |_  __ _| |__   | (___   ___ ___  _ __ ___  ___ 
-|  __  | |/ _` | '_ \   \___ \ / __/ _ \| '__/ _ \/ __|
-| |  | | | (_| | | | |  ____) | (_| (_) | | |  __/\__ \
-|_|  |_|_|\__, |_| |_| |_____/ \___\___/|_|  \___||___/
-           __/ |                                       
-========= |___/==========================================";
-                      
+            string defaultHighScoresText = File.ReadAllText(Environment.CurrentDirectory + "\\HighScoresASCIIArt.txt");
             int minRndValue = 1000;
             int maxRndValue = 9999;
             
@@ -127,38 +118,33 @@ namespace MastermindCodeChallenge
                     for (int i = 0; i < randomnumlength; i++)
                     {
                         if (i == (randomnumlength - 1) && mode == "E" ) // If it is at the end of the checking and it is Easy Mode
-                                {
-                                    for (int concatenation = 0; concatenation < randomnumlength; concatenation++)
-                                    {
-                                        outputEasyMatched = outputEasyMatched + digitsguessed[concatenation];
-                                    }
-                                    Console.WriteLine("You guessed these digits correctly " + outputEasyMatched);
+                        {
+                            for (int concatenation = 0; concatenation < randomnumlength; concatenation++)
+                            {
+                                outputEasyMatched = outputEasyMatched + digitsguessed[concatenation];
+                            }
+                            Console.WriteLine("You guessed these digits correctly " + outputEasyMatched);
                                     
-                                }
+                        }
                         if (i == (randomnumlength - 1) && mode == "H" ) // If it is at the end of the checking and it is Hard Mode
-                                {
-                                    Console.WriteLine("You have got " + numberofcorrectdigits + " digits correct.");
-                                }
+                        {
+                            Console.WriteLine("You have got " + numberofcorrectdigits + " digits correct.");
+                        }
                         if (inpArray[i] == randomArray[i]) // If there is a match
                         {
                             if (mode == "E")
                             {
                                 // Easy Mode
                                 digitsguessed[i] = randomArray[i].ToString(); // Add the number guessed right to its corresponding position in the array (array starts at 0)
-                                
                             }
 
                             if (mode == "H")
                             {
                                 // Hard Mode
                                 numberofcorrectdigits++;
-
                             }
 
                         }
-
-
-
 
                     }
                 }
