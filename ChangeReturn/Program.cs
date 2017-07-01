@@ -28,11 +28,23 @@ namespace ChangeReturn
             {
                 Console.WriteLine("What is the cost of the item?");
                 stringCost = Console.ReadLine();
-                stringCost = Regex.Replace(stringCost, "[^0-9A-Za-z.]+", ""); // Removes any special characters leaving just numbers
+                stringCost = Regex.Replace(stringCost, "[^0-9.]", ""); // Removes any special characters leaving just numbers
+                while (stringCost == "")
+                {
+                    Console.WriteLine("Please specify a cost.");
+                    stringCost = Console.ReadLine();
+                    stringCost = Regex.Replace(stringCost, "[^0-9.]", "");
+                }
                 doubleCost = Convert.ToDouble(stringCost);
                 Console.WriteLine("How much money have you given?");
                 stringMoneyGiven = Console.ReadLine();
-                stringMoneyGiven = Regex.Replace(stringMoneyGiven, "[^0-9A-Za-z-.]+", ""); // Removes any special characters leaving just numbers
+                stringMoneyGiven = Regex.Replace(stringMoneyGiven, "[^0-9.]", ""); // Removes any special characters leaving just numbers
+                while (stringMoneyGiven == "")
+                {
+                    Console.WriteLine("Please specify how much money you have given.");
+                    stringMoneyGiven = Console.ReadLine();
+                    stringMoneyGiven = Regex.Replace(stringMoneyGiven, "[^0-9.]", "");
+                }
                 doubleMoneyGiven = Convert.ToDouble(stringMoneyGiven);
                 doubleChange = Math.Round(doubleMoneyGiven - doubleCost, 2);
                 Console.WriteLine("Change: " + doubleChange);
@@ -77,6 +89,10 @@ namespace ChangeReturn
                         denominationsList.Add(0);
                     }
 
+                }
+                else
+                {
+                    denominationsList.Add(0);
                 }
 
             }
