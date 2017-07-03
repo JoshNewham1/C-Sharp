@@ -20,6 +20,9 @@ namespace ChangeReturn
             double doubleMoneyGiven;
             string seeSummary;
             string menuOption;
+            string headlessMode;
+            double minRndNumber;
+            double maxRndNumber;
             
             Console.WriteLine("-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
             Console.WriteLine("Josh's Change Return Program");
@@ -32,6 +35,7 @@ namespace ChangeReturn
                 Console.WriteLine("-=-=");
                 Console.WriteLine("Calculate the change return in (UK) currency");
                 Console.WriteLine("Calculate the change return in (US) currency");
+                Console.WriteLine("Perform a (s)elf-check");
                 Console.WriteLine("E(x)it the program");
                 menuOption = Console.ReadLine().ToUpper();
 
@@ -130,6 +134,37 @@ namespace ChangeReturn
                         }
                     }
                 }
+                while (menuOption == "S")
+                {
+                    Console.WriteLine("Headless mode? (Y) or (N)");
+                    headlessMode = Console.ReadLine().ToUpper();
+                    while (true)
+                    {
+                        minRndNumber = 1;
+                        maxRndNumber = 100000;
+                        doubleChange = 0;
+                        Random rnd = new Random();
+                        doubleCost = Math.Round(rnd.NextDouble(), 2) * maxRndNumber;
+                        minRndNumber = minRndNumber + doubleCost;
+                        doubleMoneyGiven = Math.Round(rnd.NextDouble(), 2) * (maxRndNumber - minRndNumber) + minRndNumber;
+                        doubleChange = Math.Round(doubleMoneyGiven - doubleCost, 2);
+                        if (doubleChange < 0)
+                        {
+                            Console.Clear();
+                            Console.WriteLine("Error: The change is a negative number (" + doubleChange + ")");
+                            Console.WriteLine("Press enter to continue...");
+                            Console.ReadLine();
+                        }
+                        FillListUK();
+                        CountChange();
+                        if (headlessMode == "N")
+                        {
+                            PrintChangeUK();
+                            Console.ReadLine();
+                        }
+                    }
+                    
+                }
                 if (menuOption == "X")
                 {
                     Environment.Exit(9);
@@ -140,6 +175,7 @@ namespace ChangeReturn
 
         public static void CountChange()
         {
+            denominationsList.Clear();
             for (int i = 0; i < currencyDenominations.Count; i++)
             {
                 if (doubleChange > 0)
