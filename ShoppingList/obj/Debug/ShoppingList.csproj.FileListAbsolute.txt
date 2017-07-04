@@ -1,0 +1,6 @@
+D:\Git Code\ShoppingList\ShoppingList\bin\Debug\ShoppingList.exe.config
+D:\Git Code\ShoppingList\ShoppingList\bin\Debug\ShoppingList.exe
+D:\Git Code\ShoppingList\ShoppingList\bin\Debug\ShoppingList.pdb
+D:\Git Code\ShoppingList\ShoppingList\obj\Debug\ShoppingList.csprojResolveAssemblyReference.cache
+D:\Git Code\ShoppingList\ShoppingList\obj\Debug\ShoppingList.exe
+D:\Git Code\ShoppingList\ShoppingList\obj\Debug\ShoppingList.pdb
