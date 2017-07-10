@@ -1,0 +1,6 @@
+D:\Git Code\Squares\Squares\bin\Debug\Squares.exe.config
+D:\Git Code\Squares\Squares\bin\Debug\Squares.exe
+D:\Git Code\Squares\Squares\bin\Debug\Squares.pdb
+D:\Git Code\Squares\Squares\obj\Debug\Squares.csprojResolveAssemblyReference.cache
+D:\Git Code\Squares\Squares\obj\Debug\Squares.exe
+D:\Git Code\Squares\Squares\obj\Debug\Squares.pdb
