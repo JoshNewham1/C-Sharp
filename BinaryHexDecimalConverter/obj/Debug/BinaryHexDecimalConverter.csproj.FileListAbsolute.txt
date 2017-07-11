@@ -1,0 +1,6 @@
+D:\Git Code\BinaryHexDecimalConverter\BinaryHexDecimalConverter\bin\Debug\BinaryHexDecimalConverter.exe.config
+D:\Git Code\BinaryHexDecimalConverter\BinaryHexDecimalConverter\bin\Debug\BinaryHexDecimalConverter.exe
+D:\Git Code\BinaryHexDecimalConverter\BinaryHexDecimalConverter\bin\Debug\BinaryHexDecimalConverter.pdb
+D:\Git Code\BinaryHexDecimalConverter\BinaryHexDecimalConverter\obj\Debug\BinaryHexDecimalConverter.exe
+D:\Git Code\BinaryHexDecimalConverter\BinaryHexDecimalConverter\obj\Debug\BinaryHexDecimalConverter.pdb
+D:\Git Code\BinaryHexDecimalConverter\BinaryHexDecimalConverter\obj\Debug\BinaryHexDecimalConverter.csprojResolveAssemblyReference.cache
