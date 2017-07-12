@@ -30,6 +30,7 @@ namespace BinaryHexDecimalConverter
                 Console.WriteLine("Decimal to (H)exadecimal");
                 Console.WriteLine("Binary to He(x)adecimal");
                 Console.WriteLine("Hexadecimal to (D)ecimal");
+                Console.WriteLine("(E)xit the program");
 
                 menuOption = Console.ReadLine().ToUpper(); // Read the user's choice into a variable and capitalise it
 
@@ -184,6 +185,10 @@ namespace BinaryHexDecimalConverter
                         }
 
                     }
+                }
+                if (menuOption == "E") // If the user has chosen 'E'
+                {
+                    Environment.Exit(9); // Exit the program safely with code 9
                 }
             }
         }
