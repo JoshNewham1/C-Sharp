@@ -53,14 +53,22 @@ namespace ConditionalsTask
         public static void Task1()
         {
             Console.WriteLine("Please enter a number");
-            int userNumber = Convert.ToInt32(Console.ReadLine());
-            if (userNumber >= 1 && userNumber <= 10)
+            string userNumberString = Console.ReadLine();
+            bool parseSuccessful = int.TryParse(userNumberString, out int userNumber);
+            if (parseSuccessful == true)
             {
-                Console.WriteLine("Valid");
+                if (userNumber >= 1 && userNumber <= 10)
+                {
+                    Console.WriteLine("Valid");
+                }
+                else
+                {
+                    Console.WriteLine("Invalid");
+                }
             }
             else
             {
-                Console.WriteLine("Invalid");
+                Console.WriteLine("Please type an integer");
             }
             Console.ReadLine();
         }
