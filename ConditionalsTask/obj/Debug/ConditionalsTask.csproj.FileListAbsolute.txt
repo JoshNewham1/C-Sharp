@@ -1,0 +1,6 @@
+D:\Git Code\ConditionalsTask\ConditionalsTask\bin\Debug\ConditionalsTask.exe.config
+D:\Git Code\ConditionalsTask\ConditionalsTask\bin\Debug\ConditionalsTask.exe
+D:\Git Code\ConditionalsTask\ConditionalsTask\bin\Debug\ConditionalsTask.pdb
+D:\Git Code\ConditionalsTask\ConditionalsTask\obj\Debug\ConditionalsTask.csprojResolveAssemblyReference.cache
+D:\Git Code\ConditionalsTask\ConditionalsTask\obj\Debug\ConditionalsTask.exe
+D:\Git Code\ConditionalsTask\ConditionalsTask\obj\Debug\ConditionalsTask.pdb
