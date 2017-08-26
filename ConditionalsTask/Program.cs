@@ -42,7 +42,7 @@ namespace ConditionalsTask
                 }
                 else if (menuInput == "4")
                 {
-
+                    Task4();
                 }
                 else if (menuInput == "X")
                 {
@@ -107,6 +107,27 @@ namespace ConditionalsTask
             else
             {
                 Console.WriteLine("The image is portrait");
+            }
+            Console.ReadLine();
+        }
+        public static void Task4()
+        {
+            Console.WriteLine("Please enter the speed limit");
+            int speedLimit = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Please enter the current speed of the car");
+            int currentSpeed = Convert.ToInt32(Console.ReadLine());
+            if (currentSpeed <= speedLimit)
+            {
+                Console.WriteLine("OK");
+            }
+            else
+            {
+                decimal speedPoints = Math.Floor(Convert.ToDecimal(((currentSpeed - speedLimit) / 5)));
+                if (speedPoints >= 12)
+                {
+                    Console.WriteLine("License Suspended");
+                }
+                Console.WriteLine(speedPoints + " demerit points acquired");
             }
             Console.ReadLine();
         }
