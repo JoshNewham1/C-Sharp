@@ -69,32 +69,51 @@ namespace ConditionalsTask
             else
             {
                 Console.WriteLine("Please type an integer");
+                Console.ReadLine();
             }
-            Console.ReadLine();
         }
         public static void Task2()
         {
             Console.WriteLine("Please enter your first number");
-            int firstNumber = Convert.ToInt32(Console.ReadLine());
+            string firstnumberString = Console.ReadLine();
             Console.WriteLine("Please enter your second number");
-            int secondNumber = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine();
-            Console.WriteLine(Math.Max(firstNumber, secondNumber) + " is the largest number");
+            string secondnumberString = Console.ReadLine();
+            bool parseFirstNumber = int.TryParse(firstnumberString, out int firstNumber);
+            bool parseSecondNumber = int.TryParse(secondnumberString, out int secondNumber);
+            if (parseFirstNumber == true && parseSecondNumber == true)
+            {
+                Console.WriteLine();
+                Console.WriteLine(Math.Max(firstNumber, secondNumber) + " is the largest number");
+            }
+            else
+            {
+                Console.WriteLine("Please input only integers.");
+            }
             Console.ReadLine();
         }
         public static void Task2WithConditionals()
         {
             Console.WriteLine("Please enter your first number");
-            int firstNumber = Convert.ToInt32(Console.ReadLine());
+            string firstnumberString = Console.ReadLine();
             Console.WriteLine("Please enter your second number");
-            int secondNumber = Convert.ToInt32(Console.ReadLine());
-            if (firstNumber > secondNumber)
+            string secondnumberString = Console.ReadLine();
+            bool parseFirstNumber = int.TryParse(firstnumberString, out int firstNumber);
+            bool parseSecondNumber = int.TryParse(secondnumberString, out int secondNumber);
+            if (parseFirstNumber == true && parseSecondNumber == true)
             {
-                Console.WriteLine(firstNumber + " is the largest number");
+                if (firstNumber > secondNumber)
+                {
+                    Console.WriteLine(firstNumber + " is the largest number");
+                }
+                else
+                {
+                    Console.WriteLine(secondNumber + " is the largest number");
+                }
+                Console.ReadLine();
             }
             else
             {
-                Console.WriteLine(secondNumber + " is the largest number");
+                Console.WriteLine("Please input only integers.");
             }
             Console.ReadLine();
         }
