@@ -38,7 +38,7 @@ namespace ConditionalsTask
                 }
                 else if (menuInput == "3")
                 {
-
+                    Task3();
                 }
                 else if (menuInput == "4")
                 {
@@ -87,6 +87,26 @@ namespace ConditionalsTask
             else
             {
                 Console.WriteLine(secondNumber + " is the largest number");
+            }
+            Console.ReadLine();
+        }
+        public static void Task3()
+        {
+            Console.WriteLine("Please enter the width of the image");
+            int imageWidth = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Please enter the height of the image");
+            int imageHeight = Convert.ToInt32(Console.ReadLine());
+            if (imageWidth > imageHeight)
+            {
+                Console.WriteLine("The image is landscape");
+            }
+            else if (imageWidth == imageHeight)
+            {
+                Console.WriteLine("The image is a perfect square");
+            }
+            else
+            {
+                Console.WriteLine("The image is portrait");
             }
             Console.ReadLine();
         }
