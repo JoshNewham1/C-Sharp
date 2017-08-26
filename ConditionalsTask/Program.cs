@@ -18,7 +18,8 @@ namespace ConditionalsTask
                 Console.WriteLine("Conditionals");
                 Console.WriteLine("-=-=-=-=-=-=");
                 Console.WriteLine("Task (1)");
-                Console.WriteLine("Task (2)");
+                Console.WriteLine("Task (2) without conditionals");
+                Console.WriteLine("Task 2 with (c)onditionals");
                 Console.WriteLine("Task (3)");
                 Console.WriteLine("Task (4)");
                 Console.WriteLine("E(x)it the program");
@@ -29,7 +30,11 @@ namespace ConditionalsTask
                 }
                 else if (menuInput == "2")
                 {
-
+                    Task2();
+                }
+                else if (menuInput == "C")
+                {
+                    Task2WithConditionals();
                 }
                 else if (menuInput == "3")
                 {
@@ -56,6 +61,32 @@ namespace ConditionalsTask
             else
             {
                 Console.WriteLine("Invalid");
+            }
+            Console.ReadLine();
+        }
+        public static void Task2()
+        {
+            Console.WriteLine("Please enter your first number");
+            int firstNumber = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Please enter your second number");
+            int secondNumber = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine();
+            Console.WriteLine(Math.Max(firstNumber, secondNumber) + " is the largest number");
+            Console.ReadLine();
+        }
+        public static void Task2WithConditionals()
+        {
+            Console.WriteLine("Please enter your first number");
+            int firstNumber = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Please enter your second number");
+            int secondNumber = Convert.ToInt32(Console.ReadLine());
+            if (firstNumber > secondNumber)
+            {
+                Console.WriteLine(firstNumber + " is the largest number");
+            }
+            else
+            {
+                Console.WriteLine(secondNumber + " is the largest number");
             }
             Console.ReadLine();
         }
