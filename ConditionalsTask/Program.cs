@@ -120,20 +120,29 @@ namespace ConditionalsTask
         public static void Task3()
         {
             Console.WriteLine("Please enter the width of the image");
-            int imageWidth = Convert.ToInt32(Console.ReadLine());
+            string imagewidthString = Console.ReadLine();
             Console.WriteLine("Please enter the height of the image");
-            int imageHeight = Convert.ToInt32(Console.ReadLine());
-            if (imageWidth > imageHeight)
+            string imageheightString = Console.ReadLine();
+            bool parseWidth = int.TryParse(imagewidthString, out int imageWidth);
+            bool parseHeight = int.TryParse(imageheightString, out int imageHeight);
+            if (parseWidth == true && parseHeight == true)
             {
-                Console.WriteLine("The image is landscape");
-            }
-            else if (imageWidth == imageHeight)
-            {
-                Console.WriteLine("The image is a perfect square");
+                if (imageWidth > imageHeight)
+                {
+                    Console.WriteLine("The image is landscape");
+                }
+                else if (imageWidth == imageHeight)
+                {
+                    Console.WriteLine("The image is a perfect square");
+                }
+                else
+                {
+                    Console.WriteLine("The image is portrait");
+                }
             }
             else
             {
-                Console.WriteLine("The image is portrait");
+                Console.WriteLine("Please input only integers.");
             }
             Console.ReadLine();
         }
