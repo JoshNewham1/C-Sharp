@@ -1,0 +1,6 @@
+D:\Git Code\LoopsTask\LoopsTask\bin\Debug\LoopsTask.exe.config
+D:\Git Code\LoopsTask\LoopsTask\bin\Debug\LoopsTask.exe
+D:\Git Code\LoopsTask\LoopsTask\bin\Debug\LoopsTask.pdb
+D:\Git Code\LoopsTask\LoopsTask\obj\Debug\LoopsTask.csprojResolveAssemblyReference.cache
+D:\Git Code\LoopsTask\LoopsTask\obj\Debug\LoopsTask.exe
+D:\Git Code\LoopsTask\LoopsTask\obj\Debug\LoopsTask.pdb
