@@ -29,6 +29,10 @@ namespace LoopsTask
                 {
                     Task1();
                 }
+                else if (menuInput == "2")
+                {
+                    Task2();
+                }
                 else if (menuInput == "X")
                 {
                     Environment.Exit(9);
@@ -48,6 +52,26 @@ namespace LoopsTask
             }
             Console.WriteLine(successfulDivisions + " successful divisions.");
             Console.ReadLine();
+        }
+        public static void Task2()
+        {
+            int startNumber;
+            int nextNumber;
+            Console.WriteLine("Please enter a number you would like to start with:");
+            string startNumberString = Console.ReadLine();
+            string nextNumberString = "";
+            startNumber = Convert.ToInt32(startNumberString);
+            while (nextNumberString != "OK")
+            {
+                Console.WriteLine("Please enter a number you would like to add on or type 'OK' to exit:");
+                nextNumberString = Console.ReadLine();
+                nextNumber = Convert.ToInt32(nextNumberString);
+                startNumber = startNumber + nextNumber;
+                Console.WriteLine("Sum of all numbers: " + startNumber);
+                Console.WriteLine("Press enter to continue...");
+                Console.ReadLine();
+                Console.Clear();
+            }
         }
     }
 }
