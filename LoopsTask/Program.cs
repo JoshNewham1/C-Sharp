@@ -33,6 +33,10 @@ namespace LoopsTask
                 {
                     Task2();
                 }
+                else if (menuInput == "3")
+                {
+                    Task3();
+                }
                 else if (menuInput == "X")
                 {
                     Environment.Exit(9);
@@ -66,6 +70,23 @@ namespace LoopsTask
                 }
                 numberSum = numberSum + Int32.Parse(userInput);
                 Console.WriteLine("The sum of all numbers entered is: " + numberSum);
+                Console.ReadLine();
+                Console.Clear();
+            }
+        }
+        public static void Task3()
+        {
+            while (true)
+            {
+                Console.WriteLine("Please enter the number you would like a factorial of or type 'OK' to exit...");
+                string userInput = Console.ReadLine().ToUpper();
+                int userNumber = Int32.Parse(userInput);
+                long result = userNumber;
+                for (int i = 1; i < userNumber; i++)
+                {
+                    result = result * i;
+                }
+                Console.WriteLine(userNumber + "! = " + result);
                 Console.ReadLine();
                 Console.Clear();
             }
