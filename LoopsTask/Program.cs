@@ -80,15 +80,22 @@ namespace LoopsTask
             {
                 Console.WriteLine("Please enter the number you would like a factorial of or type 'OK' to exit...");
                 string userInput = Console.ReadLine().ToUpper();
-                int userNumber = Int32.Parse(userInput);
-                long result = userNumber;
-                for (int i = 1; i < userNumber; i++)
+                if (userInput == "OK")
                 {
-                    result = result * i;
+                    break;
                 }
-                Console.WriteLine(userNumber + "! = " + result);
-                Console.ReadLine();
-                Console.Clear();
+                else
+                {
+                    int userNumber = Int32.Parse(userInput);
+                    long result = userNumber;
+                    for (int i = 1; i < userNumber; i++)
+                    {
+                        result = result * i;
+                    }
+                    Console.WriteLine(userNumber + "! = " + result);
+                    Console.ReadLine();
+                    Console.Clear();
+                }
             }
         }
     }
