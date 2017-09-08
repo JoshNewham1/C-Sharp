@@ -50,25 +50,22 @@ namespace LoopsTask
                     successfulDivisions++;
                 }
             }
-            Console.WriteLine(successfulDivisions + " successful divisions.");
+            Console.WriteLine("There are " + successfulDivisions + " numbers that are divisible by 3 between 1 and " + maxInt);
             Console.ReadLine();
         }
         public static void Task2()
         {
-            int startNumber;
-            int nextNumber;
-            Console.WriteLine("Please enter a number you would like to start with:");
-            string startNumberString = Console.ReadLine();
-            string nextNumberString = "";
-            startNumber = Convert.ToInt32(startNumberString);
-            while (nextNumberString != "OK")
+            int numberSum = 0;
+            while (true)
             {
-                Console.WriteLine("Please enter a number you would like to add on or type 'OK' to exit:");
-                nextNumberString = Console.ReadLine();
-                nextNumber = Convert.ToInt32(nextNumberString);
-                startNumber = startNumber + nextNumber;
-                Console.WriteLine("Sum of all numbers: " + startNumber);
-                Console.WriteLine("Press enter to continue...");
+                Console.WriteLine("Enter a number or type 'OK' to exit...");
+                string userInput = Console.ReadLine().ToUpper();
+                if (userInput == "OK")
+                {
+                    break;
+                }
+                numberSum = numberSum + Int32.Parse(userInput);
+                Console.WriteLine("The sum of all numbers entered is: " + numberSum);
                 Console.ReadLine();
                 Console.Clear();
             }
