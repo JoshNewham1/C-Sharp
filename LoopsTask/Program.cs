@@ -37,6 +37,10 @@ namespace LoopsTask
                 {
                     Task3();
                 }
+                else if (menuInput == "4")
+                {
+                    Task4();
+                }
                 else if (menuInput == "X")
                 {
                     Environment.Exit(9);
@@ -97,6 +101,31 @@ namespace LoopsTask
                     Console.Clear();
                 }
             }
+        }
+        public static void Task4()
+        {
+            Console.Clear();
+            Random rnd = new Random();
+            int randomNumber = rnd.Next(1, 10);
+            // Console.WriteLine("Random number: " + randomNumber);
+            for (int i = 1; i <= 4; i++)
+            {
+                Console.WriteLine("Guess a number:");
+                int userGuess = Int32.Parse(Console.ReadLine());
+                if (userGuess == randomNumber)
+                {
+                    Console.WriteLine("Congratulations! You guessed the number in " + i + " guesses.");
+                    Console.ReadLine();
+                    return;
+                }
+                else
+                {
+                    Console.WriteLine("You guessed the incorrect number. Press enter to try again.");
+                    Console.ReadLine();
+                }
+            }
+            Console.WriteLine("You have exceeded the number of allowed guesses. Press enter to return to the menu...");
+            Console.ReadLine();
         }
     }
 }
