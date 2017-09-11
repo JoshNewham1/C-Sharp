@@ -21,6 +21,7 @@ namespace LoopsTask
                 Console.WriteLine("Task (2)");
                 Console.WriteLine("Task (3)");
                 Console.WriteLine("Task (4)");
+                Console.WriteLine("Task 5 without (c)onditionals");
                 Console.WriteLine("Task (5)");
                 Console.WriteLine("E(x)it the program");
                 menuInput = Console.ReadLine().ToUpper();
@@ -40,6 +41,14 @@ namespace LoopsTask
                 else if (menuInput == "4")
                 {
                     Task4();
+                }
+                else if (menuInput == "C")
+                {
+                    Task5WithoutConditionals();
+                }
+                else if (menuInput == "5")
+                {
+                    Task5();
                 }
                 else if (menuInput == "X")
                 {
@@ -125,6 +134,31 @@ namespace LoopsTask
                 }
             }
             Console.WriteLine("You have exceeded the number of allowed guesses. Press enter to return to the menu...");
+            Console.ReadLine();
+        }
+        public static void Task5WithoutConditionals()
+        {
+            Console.WriteLine("Please enter a list of numbers seperated by a comma:");
+            string numberListString = Console.ReadLine();
+            List<int> numberList = numberListString.Split(',').Select(Int32.Parse).ToList();
+            Console.WriteLine("The max number in the list is: " + numberList.Max());
+            Console.ReadLine();
+        }
+        public static void Task5()
+        {
+            Console.WriteLine("Please enter a list of numbers seperated by a comma:");
+            string numberList = Console.ReadLine();
+            string[] numberlistSplit = numberList.Split(',');
+            int max = Int32.Parse(numberlistSplit[0]);
+            for (int i = 0; i < numberlistSplit.Length; i++)
+            {
+                int currentNumber = Int32.Parse(numberlistSplit[i]);
+                if (currentNumber > max)
+                {
+                    max = currentNumber;
+                }
+            }
+            Console.WriteLine("The max number in the list is: " + max);
             Console.ReadLine();
         }
     }
