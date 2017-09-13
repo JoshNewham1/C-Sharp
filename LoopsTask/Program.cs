@@ -109,15 +109,23 @@ namespace LoopsTask
                 }
                 else
                 {
-                    int userNumber = Int32.Parse(userInput);
-                    long result = userNumber;
-                    for (int i = 1; i < userNumber; i++)
+                    bool parseSuccessful = Int32.TryParse(userInput, out int userNumber);
+                    if (parseSuccessful == true)
                     {
-                        result = result * i;
+                        long result = userNumber;
+                        for (int i = 1; i < userNumber; i++)
+                        {
+                            result = result * i;
+                        }
+                        Console.WriteLine(userNumber + "! = " + result);
+                        Console.ReadLine();
+                        Console.Clear();
                     }
-                    Console.WriteLine(userNumber + "! = " + result);
-                    Console.ReadLine();
-                    Console.Clear();
+                    else
+                    {
+                        Console.WriteLine("Please type an enteger. Press enter to continue...");
+                        Console.ReadLine();
+                    }
                 }
             }
         }
