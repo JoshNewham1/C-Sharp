@@ -81,10 +81,20 @@ namespace LoopsTask
                 {
                     break;
                 }
-                numberSum = numberSum + Int32.Parse(userInput);
-                Console.WriteLine("The sum of all numbers entered is: " + numberSum);
-                Console.ReadLine();
-                Console.Clear();
+                bool parseSuccessful = Int32.TryParse(userInput, out int userNumber);
+                if (parseSuccessful == true)
+                {
+                    numberSum = numberSum + userNumber;
+                    Console.WriteLine("The sum of all numbers entered is: " + numberSum);
+                    Console.ReadLine();
+                    Console.Clear();
+                }
+                else
+                {
+                    Console.WriteLine("Please type an integer. Press enter to continue...");
+                    Console.ReadLine();
+                }
+                
             }
         }
         public static void Task3()
