@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace LoopsTask
@@ -165,11 +166,26 @@ namespace LoopsTask
         }
         public static void Task5WithoutConditionals()
         {
-            Console.WriteLine("Please enter a list of numbers seperated by a comma:");
-            string numberListString = Console.ReadLine();
-            List<int> numberList = numberListString.Split(',').Select(Int32.Parse).ToList();
-            Console.WriteLine("The max number in the list is: " + numberList.Max());
-            Console.ReadLine();
+            bool inputValid = false;
+            while (inputValid == false)
+            {
+                Console.WriteLine("Please enter a list of numbers seperated by a comma:");
+                string numberListString = Console.ReadLine();
+                if (!Regex.IsMatch(numberListString, @"[a-zA-Z]"))
+                {
+                    List<int> numberList = numberListString.Split(',').Select(Int32.Parse).ToList();
+                    inputValid = true;
+                    Console.WriteLine("The max number in the list is: " + numberList.Max());
+                    Console.ReadLine();
+                }
+                else
+                {
+                    Console.WriteLine("Please type only integers. Press enter to continue...");
+                    inputValid = false;
+                    Console.ReadLine();
+                }
+            }
+         
         }
         public static void Task5()
         {
@@ -179,10 +195,19 @@ namespace LoopsTask
             int max = Int32.Parse(numberlistSplit[0]);
             for (int i = 0; i < numberlistSplit.Length; i++)
             {
-                int currentNumber = Int32.Parse(numberlistSplit[i]);
-                if (currentNumber > max)
+                bool parseSuccessful = Int32.TryParse(numberlistSplit[i], out int currentNumber);
+                if (parseSuccessful == true)
                 {
-                    max = currentNumber;
+                    if (currentNumber > max)
+                    {
+                        max = currentNumber;
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Please type only integers. Press enter to continue...");
+                    Console.ReadLine();
+                    return;
                 }
             }
             Console.WriteLine("The max number in the list is: " + max);
