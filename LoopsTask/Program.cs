@@ -123,7 +123,7 @@ namespace LoopsTask
                     }
                     else
                     {
-                        Console.WriteLine("Please type an enteger. Press enter to continue...");
+                        Console.WriteLine("Please type an integer. Press enter to continue...");
                         Console.ReadLine();
                     }
                 }
@@ -138,16 +138,25 @@ namespace LoopsTask
             for (int i = 1; i <= 4; i++)
             {
                 Console.WriteLine("Guess a number:");
-                int userGuess = Int32.Parse(Console.ReadLine());
-                if (userGuess == randomNumber)
+                bool parseSuccessful = Int32.TryParse(Console.ReadLine(), out int userGuess);
+                if (parseSuccessful == true)
                 {
-                    Console.WriteLine("Congratulations! You guessed the number in " + i + " guesses.");
-                    Console.ReadLine();
-                    return;
+                    if (userGuess == randomNumber)
+                    {
+                        Console.WriteLine("Congratulations! You guessed the number in " + i + " guesses.");
+                        Console.ReadLine();
+                        return;
+                    }
+                    else
+                    {
+                        Console.WriteLine("You guessed the incorrect number. Press enter to try again.");
+                        Console.ReadLine();
+                    }
                 }
                 else
                 {
-                    Console.WriteLine("You guessed the incorrect number. Press enter to try again.");
+                    Console.WriteLine("Please type an integer. Press enter to continue...");
+                    i -= 1; // Takes this guess away from the total number of guesses as it is not a valid guess
                     Console.ReadLine();
                 }
             }
