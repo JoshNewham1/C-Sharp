@@ -8,3 +8,4 @@ D:\Git Code\HockeyGame\HockeyGame\obj\Debug\HockeyGame.csproj.GenerateResource.C
 D:\Git Code\HockeyGame\HockeyGame\obj\Debug\HockeyGame.csproj.CoreCompileInputs.cache
 D:\Git Code\HockeyGame\HockeyGame\obj\Debug\HockeyGame.exe
 D:\Git Code\HockeyGame\HockeyGame\obj\Debug\HockeyGame.pdb
+D:\Git Code\HockeyGame\HockeyGame\obj\Debug\HockeyGame.AddTeams.resources

@@ -1,4 +1,6 @@
-﻿namespace HockeyGame
+﻿using System;
+
+namespace HockeyGame
 {
     partial class Main
     {
@@ -35,7 +37,7 @@
             this.updateTeamButton = new System.Windows.Forms.Button();
             this.createReportButton = new System.Windows.Forms.Button();
             this.leaderboardButton = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.exitButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // addTeamButton
@@ -47,6 +49,7 @@
             this.addTeamButton.TabIndex = 0;
             this.addTeamButton.Text = "Add Team...";
             this.addTeamButton.UseVisualStyleBackColor = true;
+            this.addTeamButton.Click += new System.EventHandler(this.addTeamButton_Click);
             // 
             // welcomeLabel
             // 
@@ -99,22 +102,23 @@
             this.leaderboardButton.Text = "Leaderboard";
             this.leaderboardButton.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // exitButton
             // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(414, 375);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(58, 30);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "Exit";
-            this.button1.UseVisualStyleBackColor = true;
+            this.exitButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.exitButton.Location = new System.Drawing.Point(414, 375);
+            this.exitButton.Name = "exitButton";
+            this.exitButton.Size = new System.Drawing.Size(58, 30);
+            this.exitButton.TabIndex = 6;
+            this.exitButton.Text = "Exit";
+            this.exitButton.UseVisualStyleBackColor = true;
+            this.exitButton.Click += new System.EventHandler(this.exitButton_click);
             // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(484, 421);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.exitButton);
             this.Controls.Add(this.leaderboardButton);
             this.Controls.Add(this.createReportButton);
             this.Controls.Add(this.updateTeamButton);
@@ -124,6 +128,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Main";
             this.Text = "Hockey Game";
+            this.Load += new System.EventHandler(this.Main_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -137,7 +142,7 @@
         private System.Windows.Forms.Button updateTeamButton;
         private System.Windows.Forms.Button createReportButton;
         private System.Windows.Forms.Button leaderboardButton;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button exitButton;
     }
 }
 
