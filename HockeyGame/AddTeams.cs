@@ -15,6 +15,10 @@ namespace HockeyGame
         public AddTeams(string[][] teams)
         {
             InitializeComponent();
+            for (int i = 0; i < teams[0].Length; i++)
+            {
+                teamNameDropDown.Items.Add(teams[i][0]);
+            }
         }
     }
 }
