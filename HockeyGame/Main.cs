@@ -37,7 +37,7 @@ namespace HockeyGame
 
 
 
-        private string[][] ReadTeams() // Method to read teams from a CSV file
+        public static string[][] ReadTeams() // Method to read teams from a CSV file
         {
             string path = "D:\\Git Code\\HockeyGame\\teams.csv"; // Change to where the CSV file is stored
             string[][] teams = File.ReadLines(path).Select(x => x.Split(',')).ToArray();
