@@ -19,15 +19,31 @@ namespace HockeyGame
 
         public void submitButton_Click(object sender, EventArgs e)
         {
+            bool nameTaken = false;
             string[][] teams = Main.ReadTeams(); /* Calls the ReadTeams method from Main.cs 
                                                   * to read teams from CSV to 2D array
                                                   */
-            for (int i = 0; i < teams[0].Length; i++)
+            for (int i = 0; i < teams.Length; i++)
             {
-                if (teams[0][i] == newTeamNameTextBox.Text) // If the team already exists in the CSV file
+                if (teams[i][0] == newTeamNameTextBox.Text) // If the team already exists in the CSV file
                 {
                     MessageBox.Show("This team name is already taken. Please choose a different name");
+                    nameTaken = true;
                 }
+            }
+            if (nameTaken == false)
+            {
+                string[] newTeam = new string[7];
+                newTeam[0] = newTeamNameTextBox.Text;
+                newTeam[1] = playerOneTextBox.Text;
+                newTeam[2] = playerTwoTextBox.Text;
+                newTeam[3] = playerThreeTextBox.Text;
+                newTeam[4] = playerFourTextBox.Text;
+                newTeam[5] = playerFiveTextBox.Text;
+                newTeam[6] = playerSixTextBox.Text;
+
+                Main.WriteNewTeams(teams, newTeam);
+                MessageBox.Show("Team added...");
             }
         }
     }

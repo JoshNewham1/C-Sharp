@@ -35,13 +35,31 @@ namespace HockeyGame
             createAddTeamsForm.Show(); // Show the add teams menu
         }
 
-
-
         public static string[][] ReadTeams() // Method to read teams from a CSV file
         {
             string path = "D:\\Git Code\\HockeyGame\\teams.csv"; // Change to where the CSV file is stored
             string[][] teams = File.ReadLines(path).Select(x => x.Split(',')).ToArray();
             return teams;
+        }
+        public static void WriteNewTeams(string[][] teams, string[] newTeam) // Method to write teams to a CSV file
+        {
+            string path = "D:\\Git Code\\HockeyGame\\teams.csv"; // Change to where the CSV file is stored
+            StreamWriter writer = new StreamWriter(File.OpenWrite(path));
+            // Write the old teams back to the .CSV file
+            for (int i = 0; i < teams.Length; i++)
+            {
+                for (int x = 0; x < 6; x++)
+                {
+                    writer.Write(teams[i][x] + ",");
+                }
+                writer.Write(Environment.NewLine);
+            }
+            // Add the new team
+            for (int i = 0; i < newTeam.Length; i++)
+            {
+                writer.Write(newTeam[i] + ",");
+            }
+            writer.Close();
         }
     }
 }
