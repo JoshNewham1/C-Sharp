@@ -1,0 +1,6 @@
+D:\Git Code\LetterList\LetterList\bin\Debug\LetterList.exe.config
+D:\Git Code\LetterList\LetterList\bin\Debug\LetterList.exe
+D:\Git Code\LetterList\LetterList\bin\Debug\LetterList.pdb
+D:\Git Code\LetterList\LetterList\obj\Debug\LetterList.csprojResolveAssemblyReference.cache
+D:\Git Code\LetterList\LetterList\obj\Debug\LetterList.exe
+D:\Git Code\LetterList\LetterList\obj\Debug\LetterList.pdb
