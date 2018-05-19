@@ -1,0 +1,6 @@
+D:\Git Code\WordCounter\WordCounter\bin\Debug\WordCounter.exe.config
+D:\Git Code\WordCounter\WordCounter\bin\Debug\WordCounter.exe
+D:\Git Code\WordCounter\WordCounter\bin\Debug\WordCounter.pdb
+D:\Git Code\WordCounter\WordCounter\obj\Debug\WordCounter.csprojResolveAssemblyReference.cache
+D:\Git Code\WordCounter\WordCounter\obj\Debug\WordCounter.exe
+D:\Git Code\WordCounter\WordCounter\obj\Debug\WordCounter.pdb
