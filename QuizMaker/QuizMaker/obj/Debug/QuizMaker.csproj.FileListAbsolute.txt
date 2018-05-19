@@ -1,0 +1,9 @@
+D:\Git Code\QuizMaker\QuizMaker\bin\Debug\QuizMaker.exe.config
+D:\Git Code\QuizMaker\QuizMaker\bin\Debug\QuizMaker.exe
+D:\Git Code\QuizMaker\QuizMaker\bin\Debug\QuizMaker.pdb
+D:\Git Code\QuizMaker\QuizMaker\obj\Debug\QuizMaker.csprojResolveAssemblyReference.cache
+D:\Git Code\QuizMaker\QuizMaker\obj\Debug\QuizMaker.exe
+D:\Git Code\QuizMaker\QuizMaker\obj\Debug\QuizMaker.pdb
+D:\Git Code\QuizMaker\QuizMaker\bin\Debug\Newtonsoft.Json.dll
+D:\Git Code\QuizMaker\QuizMaker\bin\Debug\Newtonsoft.Json.pdb
+D:\Git Code\QuizMaker\QuizMaker\bin\Debug\Newtonsoft.Json.xml
