@@ -1,0 +1,12 @@
+C:\Users\joshn\Desktop\Programmin\C# Projects\MastermindCodeChallenge\MastermindCodeChallenge\bin\Debug\MastermindCodeChallenge.exe.config
+C:\Users\joshn\Desktop\Programmin\C# Projects\MastermindCodeChallenge\MastermindCodeChallenge\bin\Debug\MastermindCodeChallenge.exe
+C:\Users\joshn\Desktop\Programmin\C# Projects\MastermindCodeChallenge\MastermindCodeChallenge\bin\Debug\MastermindCodeChallenge.pdb
+C:\Users\joshn\Desktop\Programmin\C# Projects\MastermindCodeChallenge\MastermindCodeChallenge\obj\Debug\MastermindCodeChallenge.csprojResolveAssemblyReference.cache
+C:\Users\joshn\Desktop\Programmin\C# Projects\MastermindCodeChallenge\MastermindCodeChallenge\obj\Debug\MastermindCodeChallenge.exe
+C:\Users\joshn\Desktop\Programmin\C# Projects\MastermindCodeChallenge\MastermindCodeChallenge\obj\Debug\MastermindCodeChallenge.pdb
+D:\Git Code\MastermindCodeChallenge\MastermindCodeChallenge\bin\Debug\MastermindCodeChallenge.exe.config
+D:\Git Code\MastermindCodeChallenge\MastermindCodeChallenge\bin\Debug\MastermindCodeChallenge.exe
+D:\Git Code\MastermindCodeChallenge\MastermindCodeChallenge\bin\Debug\MastermindCodeChallenge.pdb
+D:\Git Code\MastermindCodeChallenge\MastermindCodeChallenge\obj\Debug\MastermindCodeChallenge.csprojResolveAssemblyReference.cache
+D:\Git Code\MastermindCodeChallenge\MastermindCodeChallenge\obj\Debug\MastermindCodeChallenge.exe
+D:\Git Code\MastermindCodeChallenge\MastermindCodeChallenge\obj\Debug\MastermindCodeChallenge.pdb
