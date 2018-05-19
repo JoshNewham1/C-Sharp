@@ -1,0 +1,6 @@
+D:\Git Code\VowelCounter\VowelCounter\bin\Debug\VowelCounter.exe.config
+D:\Git Code\VowelCounter\VowelCounter\bin\Debug\VowelCounter.exe
+D:\Git Code\VowelCounter\VowelCounter\bin\Debug\VowelCounter.pdb
+D:\Git Code\VowelCounter\VowelCounter\obj\Debug\VowelCounter.csprojResolveAssemblyReference.cache
+D:\Git Code\VowelCounter\VowelCounter\obj\Debug\VowelCounter.exe
+D:\Git Code\VowelCounter\VowelCounter\obj\Debug\VowelCounter.pdb
