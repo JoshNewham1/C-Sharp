@@ -1,0 +1,6 @@
+D:\Git Code\Hangman\Hangman\bin\Debug\Hangman.exe.config
+D:\Git Code\Hangman\Hangman\bin\Debug\Hangman.exe
+D:\Git Code\Hangman\Hangman\bin\Debug\Hangman.pdb
+D:\Git Code\Hangman\Hangman\obj\Debug\Hangman.csprojResolveAssemblyReference.cache
+D:\Git Code\Hangman\Hangman\obj\Debug\Hangman.exe
+D:\Git Code\Hangman\Hangman\obj\Debug\Hangman.pdb
