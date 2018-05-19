@@ -1,0 +1,5 @@
+D:\Git Code\TimesTables\TimesTables\bin\Debug\TimesTables.exe.config
+D:\Git Code\TimesTables\TimesTables\bin\Debug\TimesTables.exe
+D:\Git Code\TimesTables\TimesTables\bin\Debug\TimesTables.pdb
+D:\Git Code\TimesTables\TimesTables\obj\Debug\TimesTables.exe
+D:\Git Code\TimesTables\TimesTables\obj\Debug\TimesTables.pdb
