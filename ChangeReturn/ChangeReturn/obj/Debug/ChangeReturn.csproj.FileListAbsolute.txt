@@ -1,0 +1,6 @@
+D:\Git Code\ChangeReturn\ChangeReturn\bin\Debug\ChangeReturn.exe.config
+D:\Git Code\ChangeReturn\ChangeReturn\bin\Debug\ChangeReturn.exe
+D:\Git Code\ChangeReturn\ChangeReturn\bin\Debug\ChangeReturn.pdb
+D:\Git Code\ChangeReturn\ChangeReturn\obj\Debug\ChangeReturn.csprojResolveAssemblyReference.cache
+D:\Git Code\ChangeReturn\ChangeReturn\obj\Debug\ChangeReturn.exe
+D:\Git Code\ChangeReturn\ChangeReturn\obj\Debug\ChangeReturn.pdb
