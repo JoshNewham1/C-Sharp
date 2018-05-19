@@ -1,0 +1,6 @@
+D:\Git Code\UnitConverter\UnitConverter\bin\Debug\UnitConverter.exe.config
+D:\Git Code\UnitConverter\UnitConverter\bin\Debug\UnitConverter.exe
+D:\Git Code\UnitConverter\UnitConverter\bin\Debug\UnitConverter.pdb
+D:\Git Code\UnitConverter\UnitConverter\obj\Debug\UnitConverter.csprojResolveAssemblyReference.cache
+D:\Git Code\UnitConverter\UnitConverter\obj\Debug\UnitConverter.exe
+D:\Git Code\UnitConverter\UnitConverter\obj\Debug\UnitConverter.pdb
