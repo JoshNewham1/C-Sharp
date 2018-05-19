@@ -1,0 +1,11 @@
+D:\Git Code\HockeyGame\HockeyGame\bin\Debug\HockeyGame.exe.config
+D:\Git Code\HockeyGame\HockeyGame\bin\Debug\HockeyGame.exe
+D:\Git Code\HockeyGame\HockeyGame\bin\Debug\HockeyGame.pdb
+D:\Git Code\HockeyGame\HockeyGame\obj\Debug\HockeyGame.csprojResolveAssemblyReference.cache
+D:\Git Code\HockeyGame\HockeyGame\obj\Debug\HockeyGame.Main.resources
+D:\Git Code\HockeyGame\HockeyGame\obj\Debug\HockeyGame.Properties.Resources.resources
+D:\Git Code\HockeyGame\HockeyGame\obj\Debug\HockeyGame.csproj.GenerateResource.Cache
+D:\Git Code\HockeyGame\HockeyGame\obj\Debug\HockeyGame.csproj.CoreCompileInputs.cache
+D:\Git Code\HockeyGame\HockeyGame\obj\Debug\HockeyGame.exe
+D:\Git Code\HockeyGame\HockeyGame\obj\Debug\HockeyGame.pdb
+D:\Git Code\HockeyGame\HockeyGame\obj\Debug\HockeyGame.AddTeams.resources
