@@ -1,0 +1,18 @@
+c:\users\joshn\documents\visual studio 2017\Projects\AverageGraphical\AverageGraphical\bin\Debug\AverageGraphical.exe.config
+c:\users\joshn\documents\visual studio 2017\Projects\AverageGraphical\AverageGraphical\bin\Debug\AverageGraphical.exe
+c:\users\joshn\documents\visual studio 2017\Projects\AverageGraphical\AverageGraphical\bin\Debug\AverageGraphical.pdb
+c:\users\joshn\documents\visual studio 2017\Projects\AverageGraphical\AverageGraphical\obj\Debug\AverageGraphical.csprojResolveAssemblyReference.cache
+c:\users\joshn\documents\visual studio 2017\Projects\AverageGraphical\AverageGraphical\obj\Debug\AverageGraphical.Form1.resources
+c:\users\joshn\documents\visual studio 2017\Projects\AverageGraphical\AverageGraphical\obj\Debug\AverageGraphical.Properties.Resources.resources
+c:\users\joshn\documents\visual studio 2017\Projects\AverageGraphical\AverageGraphical\obj\Debug\AverageGraphical.csproj.GenerateResource.Cache
+c:\users\joshn\documents\visual studio 2017\Projects\AverageGraphical\AverageGraphical\obj\Debug\AverageGraphical.exe
+c:\users\joshn\documents\visual studio 2017\Projects\AverageGraphical\AverageGraphical\obj\Debug\AverageGraphical.pdb
+D:\Git Code\AverageGraphical\AverageGraphical\bin\Debug\AverageGraphical.exe.config
+D:\Git Code\AverageGraphical\AverageGraphical\bin\Debug\AverageGraphical.exe
+D:\Git Code\AverageGraphical\AverageGraphical\bin\Debug\AverageGraphical.pdb
+D:\Git Code\AverageGraphical\AverageGraphical\obj\Debug\AverageGraphical.csprojResolveAssemblyReference.cache
+D:\Git Code\AverageGraphical\AverageGraphical\obj\Debug\AverageGraphical.Form1.resources
+D:\Git Code\AverageGraphical\AverageGraphical\obj\Debug\AverageGraphical.Properties.Resources.resources
+D:\Git Code\AverageGraphical\AverageGraphical\obj\Debug\AverageGraphical.csproj.GenerateResource.Cache
+D:\Git Code\AverageGraphical\AverageGraphical\obj\Debug\AverageGraphical.exe
+D:\Git Code\AverageGraphical\AverageGraphical\obj\Debug\AverageGraphical.pdb
