@@ -1,0 +1,6 @@
+D:\Git Code\CheckIfPalindrome\CheckIfPalindrome\obj\Debug\CheckIfPalindrome.csprojResolveAssemblyReference.cache
+D:\Git Code\CheckIfPalindrome\CheckIfPalindrome\bin\Debug\CheckIfPalindrome.exe.config
+D:\Git Code\CheckIfPalindrome\CheckIfPalindrome\bin\Debug\CheckIfPalindrome.exe
+D:\Git Code\CheckIfPalindrome\CheckIfPalindrome\bin\Debug\CheckIfPalindrome.pdb
+D:\Git Code\CheckIfPalindrome\CheckIfPalindrome\obj\Debug\CheckIfPalindrome.exe
+D:\Git Code\CheckIfPalindrome\CheckIfPalindrome\obj\Debug\CheckIfPalindrome.pdb
