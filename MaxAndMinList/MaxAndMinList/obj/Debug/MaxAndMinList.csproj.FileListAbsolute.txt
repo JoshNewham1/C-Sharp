@@ -1,0 +1,6 @@
+D:\Git Code\MaxAndMinList\MaxAndMinList\bin\Debug\MaxAndMinList.exe.config
+D:\Git Code\MaxAndMinList\MaxAndMinList\bin\Debug\MaxAndMinList.exe
+D:\Git Code\MaxAndMinList\MaxAndMinList\bin\Debug\MaxAndMinList.pdb
+D:\Git Code\MaxAndMinList\MaxAndMinList\obj\Debug\MaxAndMinList.csprojResolveAssemblyReference.cache
+D:\Git Code\MaxAndMinList\MaxAndMinList\obj\Debug\MaxAndMinList.exe
+D:\Git Code\MaxAndMinList\MaxAndMinList\obj\Debug\MaxAndMinList.pdb
