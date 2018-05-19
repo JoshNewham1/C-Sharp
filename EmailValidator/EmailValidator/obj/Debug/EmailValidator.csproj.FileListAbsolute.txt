@@ -1,0 +1,6 @@
+D:\Git Code\EmailValidator\EmailValidator\bin\Debug\EmailValidator.exe.config
+D:\Git Code\EmailValidator\EmailValidator\bin\Debug\EmailValidator.exe
+D:\Git Code\EmailValidator\EmailValidator\bin\Debug\EmailValidator.pdb
+D:\Git Code\EmailValidator\EmailValidator\obj\Debug\EmailValidator.csprojResolveAssemblyReference.cache
+D:\Git Code\EmailValidator\EmailValidator\obj\Debug\EmailValidator.exe
+D:\Git Code\EmailValidator\EmailValidator\obj\Debug\EmailValidator.pdb
